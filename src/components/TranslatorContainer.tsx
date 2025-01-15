@@ -77,7 +77,7 @@ export default function TranslatorContainer() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <textarea
-          className="w-full h-40 p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent 
+          className="w-full h-40 p-4 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent 
             bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
             border-gray-300 dark:border-gray-600 
             placeholder-gray-500 dark:placeholder-gray-400"
@@ -91,7 +91,7 @@ export default function TranslatorContainer() {
           <div className="flex space-x-4">
             <button
               onClick={() => setIsHistoryOpen(true)}
-              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
               disabled={isTranslating}
             >
               <FaHistory className="mr-2" />
@@ -103,7 +103,7 @@ export default function TranslatorContainer() {
             </button>
             <button
               onClick={handleReset}
-              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
               disabled={isTranslating}
             >
               <FaUndo className="mr-2" />
@@ -115,26 +115,30 @@ export default function TranslatorContainer() {
             </button>
           </div>
           <button
-            className={`relative px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 
-              dark:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed
+            className={`relative px-6 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 
+              dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed
               min-w-[120px] min-h-[64px]`}
             onClick={handleTranslate}
             disabled={isTranslating || !inputText.trim()}
           >
             {isTranslating ? (
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center text-white">
                 <FaSpinner className="animate-spin mb-1" size={20} />
                 <BilingualText 
-                  zh="翻译中..."
-                  en="Translating..."
-                  className="text-center text-white"
+                  zh={TEXT.translating.zh}
+                  en={TEXT.translating.en}
+                  cnColor="text-white"
+                  enColor="text-white"
+                  className="text-center"
                 />
               </div>
             ) : (
               <BilingualText 
                 zh={TEXT.translate.zh} 
                 en={TEXT.translate.en}
-                className="text-center text-white"
+                cnColor="text-white"
+                enColor="text-white"
+                className="text-center"
               />
             )}
           </button>
@@ -154,13 +158,13 @@ export default function TranslatorContainer() {
               <div className="space-x-4">
                 <button
                   onClick={() => handleSpeak(translation.translate)}
-                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
                 >
                   <FaVolumeUp size={20} />
                 </button>
                 <button
                   onClick={() => navigator.clipboard.writeText(translation.translate)}
-                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
                 >
                   <FaCopy size={20} />
                 </button>
@@ -184,13 +188,13 @@ export default function TranslatorContainer() {
               <div className="space-x-4">
                 <button
                   onClick={() => handleSpeak(translation.captionTranslate)}
-                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
                 >
                   <FaVolumeUp size={20} />
                 </button>
                 <button
                   onClick={() => navigator.clipboard.writeText(translation.captionTranslate)}
-                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
                 >
                   <FaCopy size={20} />
                 </button>
@@ -203,7 +207,7 @@ export default function TranslatorContainer() {
                   className={
                     index % 2 === 0 
                       ? "text-gray-900 dark:text-gray-100" 
-                      : "text-blue-700 dark:text-blue-400"
+                      : "text-primary-600 dark:text-primary-400"
                   }
                 >
                   {line}

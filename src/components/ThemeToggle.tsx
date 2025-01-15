@@ -63,7 +63,7 @@ export default function ThemeToggle() {
                           : ''
                       } ${
                         theme === item.id
-                          ? 'text-blue-600 dark:text-blue-400'
+                          ? 'text-primary-500 dark:text-primary-400'
                           : 'text-gray-700 dark:text-gray-200'
                       } group flex w-full items-center rounded-md px-2 py-2`}
                     >

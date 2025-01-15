@@ -2,13 +2,15 @@ interface BilingualTextProps {
   zh: string;
   en: string;
   className?: string;
+  cnColor?: string;
+  enColor?: string;
 }
 
-export function BilingualText({ zh, en, className = '' }: BilingualTextProps) {
+export function BilingualText({ zh, en, className = '', cnColor = 'text-gray-900 dark:text-gray-100', enColor = 'text-gray-500 dark:text-gray-400' }: BilingualTextProps) {
   return (
     <div className={`flex flex-col ${className}`}>
-      <span className="text-gray-900 dark:text-gray-100">{zh}</span>
-      <span className="text-gray-500 dark:text-gray-400 text-sm">{en}</span>
+      <span className={cnColor}>{zh}</span>
+      <span className={`${enColor} text-sm`}>{en}</span>
     </div>
   );
 } 

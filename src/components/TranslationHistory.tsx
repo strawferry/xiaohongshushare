@@ -121,7 +121,7 @@ export default function TranslationHistory({ isOpen, onClose, onSelect }: Transl
                           onSelect(item);
                           onClose();
                         }}
-                        className="w-full text-left p-4 rounded-lg border hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                        className="w-full text-left p-4 rounded-lg border hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
                       >
                         <div className="flex justify-between items-start mb-2">
                           <p className="text-gray-900 dark:text-gray-100 line-clamp-2">{item.original_text}</p>
