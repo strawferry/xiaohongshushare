@@ -5,14 +5,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FaTimes } from 'react-icons/fa';
 import { BilingualText } from './BilingualText';
 import { TEXT } from '@/constants/text';
-
-interface HistoryItem {
-  id: number;
-  original_text: string;
-  translated_text: string;
-  caption_translate: string;
-  created_at: string;
-}
+import { HistoryManager, HistoryItem } from '@/lib/historyManager';
 
 interface TranslationHistoryProps {
   isOpen: boolean;
@@ -22,26 +15,34 @@ interface TranslationHistoryProps {
 
 export default function TranslationHistory({ isOpen, onClose, onSelect }: TranslationHistoryProps) {
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const fetchHistory = async () => {
+    // 首先显示本地历史
+    const localHistory = HistoryManager.getLocalHistory();
+    setHistory(localHistory);
+
+    // 然后尝试获取远程历史
+    try {
+      setLoading(true);
+      const response = await fetch('/api/translation-history');
+      const data = await response.json();
+      if (response.ok) {
+        setHistory(data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch remote history:', error);
+      // 如果远程获取失败，继续使用本地历史
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
       fetchHistory();
     }
   }, [isOpen]);
-
-  const fetchHistory = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch('/api/translation-history');
-      const data = await response.json();
-      setHistory(data);
-    } catch (error) {
-      console.error('Failed to fetch history:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString('zh-CN', {
@@ -96,25 +97,17 @@ export default function TranslationHistory({ isOpen, onClose, onSelect }: Transl
                   </button>
                 </div>
 
-                {loading ? (
-                  <div className="py-10 text-center">
-                    <BilingualText
-                      zh={TEXT.history_record.loading.zh}
-                      en={TEXT.history_record.loading.en}
-                      className="text-gray-500 dark:text-gray-400"
-                    />
-                  </div>
-                ) : history.length === 0 ? (
-                  <div className="py-10 text-center">
-                    <BilingualText
-                      zh={TEXT.history_record.empty.zh}
-                      en={TEXT.history_record.empty.en}
-                      className="text-gray-500 dark:text-gray-400"
-                    />
-                  </div>
-                ) : (
-                  <div className="space-y-4 max-h-[60vh] overflow-y-auto">
-                    {history.map((item) => (
+                <div className="space-y-4 max-h-[60vh] overflow-y-auto">
+                  {history.length === 0 ? (
+                    <div className="py-10 text-center">
+                      <BilingualText
+                        zh={TEXT.history_record.empty.zh}
+                        en={TEXT.history_record.empty.en}
+                        className="text-gray-500 dark:text-gray-400"
+                      />
+                    </div>
+                  ) : (
+                    history.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => {
@@ -131,9 +124,9 @@ export default function TranslationHistory({ isOpen, onClose, onSelect }: Transl
                         </div>
                         <p className="text-gray-600 dark:text-gray-300 line-clamp-2">{item.translated_text}</p>
                       </button>
-                    ))}
-                  </div>
-                )}
+                    ))
+                  )}
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

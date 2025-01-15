@@ -6,6 +6,7 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 import TranslationHistory from './TranslationHistory';
 import { TEXT } from '@/constants/text';
 import { BilingualText } from '@/components/BilingualText';
+import { HistoryManager } from '@/lib/historyManager';
 
 interface Translation {
   origin: string;
@@ -47,6 +48,14 @@ export default function TranslatorContainer() {
       };
       
       setTranslation(newTranslation);
+
+      // 保存到本地历史
+      HistoryManager.addToLocalHistory({
+        original_text: newTranslation.origin,
+        translated_text: newTranslation.translate,
+        caption_translate: newTranslation.captionTranslate
+      });
+
     } catch (error) {
       console.error('Translation error:', error);
     } finally {
