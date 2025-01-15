@@ -4,11 +4,13 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { FaSun, FaMoon, FaDesktop, FaChevronDown } from 'react-icons/fa';
 import { useTheme } from '@/contexts/ThemeContext';
+import { BilingualText } from './BilingualText';
+import { TEXT } from '@/constants/text';
 
 const themes = [
-  { id: 'light', name: '浅色模式', icon: FaSun },
-  { id: 'dark', name: '深色模式', icon: FaMoon },
-  { id: 'system', name: '跟随系统', icon: FaDesktop },
+  { id: 'light', icon: FaSun, text: TEXT.themes.light },
+  { id: 'dark', icon: FaMoon, text: TEXT.themes.dark },
+  { id: 'system', icon: FaDesktop, text: TEXT.themes.system },
 ] as const;
 
 export default function ThemeToggle() {
@@ -63,13 +65,14 @@ export default function ThemeToggle() {
                         theme === item.id
                           ? 'text-blue-600 dark:text-blue-400'
                           : 'text-gray-700 dark:text-gray-200'
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded-md px-2 py-2`}
                     >
-                      <Icon
-                        className="mr-2"
-                        size={18}
+                      <Icon className="mr-2" size={18} />
+                      <BilingualText
+                        zh={item.text.zh}
+                        en={item.text.en}
+                        className="text-left"
                       />
-                      {item.name}
                     </button>
                   )}
                 </Menu.Item>
