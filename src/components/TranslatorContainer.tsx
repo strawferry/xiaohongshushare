@@ -3,21 +3,26 @@
 import { useState } from 'react';
 import { FaVolumeUp, FaHistory, FaCopy } from 'react-icons/fa';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { saveTranslation } from '@/lib/db';
+import TranslationHistory from './TranslationHistory';
 
 interface Translation {
-  original: string;
-  translatedParallel: string;
-  translatedComplete: string;
+  origin: string;
+  translate: string;
+  captionTranslate: string;
   timestamp: Date;
 }
 
 export default function TranslatorContainer() {
   const [inputText, setInputText] = useState('');
   const [translation, setTranslation] = useState<Translation | null>(null);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const { speak } = useSpeechSynthesis();
 
   const handleTranslate = async () => {
+    if (!inputText.trim()) {
+      return;
+    }
+
     try {
       const response = await fetch('/api/translate', {
         method: 'POST',
@@ -28,17 +33,16 @@ export default function TranslatorContainer() {
       });
       
       const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Translation failed');
+      }
+
       const newTranslation = {
-        original: inputText,
-        translatedParallel: data.parallelTranslation,
-        translatedComplete: data.completeTranslation,
+        ...data,
         timestamp: new Date(),
       };
       
       setTranslation(newTranslation);
-      
-      // 保存到历史记录
-      await saveTranslation(newTranslation);
     } catch (error) {
       console.error('Translation error:', error);
     }
@@ -46,6 +50,16 @@ export default function TranslatorContainer() {
 
   const handleSpeak = (text: string) => {
     speak({ text });
+  };
+
+  const handleHistorySelect = (historyItem: any) => {
+    setTranslation({
+      origin: historyItem.original_text,
+      translate: historyItem.translated_text,
+      captionTranslate: historyItem.caption_translate,
+      timestamp: new Date(historyItem.created_at)
+    });
+    setInputText(historyItem.original_text);
   };
 
   return (
@@ -58,7 +72,14 @@ export default function TranslatorContainer() {
           onChange={(e) => setInputText(e.target.value)}
         />
         
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={() => setIsHistoryOpen(true)}
+            className="flex items-center px-4 py-2 text-gray-600 hover:text-blue-500"
+          >
+            <FaHistory className="mr-2" />
+            历史记录
+          </button>
           <button
             className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             onClick={handleTranslate}
@@ -76,20 +97,26 @@ export default function TranslatorContainer() {
               <h2 className="text-xl font-semibold">整体翻译</h2>
               <div className="space-x-4">
                 <button
-                  onClick={() => handleSpeak(translation.translatedComplete)}
+                  onClick={() => handleSpeak(translation.translate)}
                   className="text-gray-600 hover:text-blue-500"
                 >
                   <FaVolumeUp size={20} />
                 </button>
                 <button
-                  onClick={() => navigator.clipboard.writeText(translation.translatedComplete)}
+                  onClick={() => navigator.clipboard.writeText(translation.translate)}
                   className="text-gray-600 hover:text-blue-500"
                 >
                   <FaCopy size={20} />
                 </button>
               </div>
             </div>
-            <p className="text-blue-600">{translation.translatedComplete}</p>
+            <div className="space-y-4 text-gray-700">
+              {translation.translate.split('\n').map((line, index) => (
+                <p key={index}>
+                  {line}
+                </p>
+              ))}
+            </div>
           </div>
 
           {/* 双语对照翻译结果 */}
@@ -98,13 +125,13 @@ export default function TranslatorContainer() {
               <h2 className="text-xl font-semibold">双语对照</h2>
               <div className="space-x-4">
                 <button
-                  onClick={() => handleSpeak(translation.translatedParallel)}
+                  onClick={() => handleSpeak(translation.captionTranslate)}
                   className="text-gray-600 hover:text-blue-500"
                 >
                   <FaVolumeUp size={20} />
                 </button>
                 <button
-                  onClick={() => navigator.clipboard.writeText(translation.translatedParallel)}
+                  onClick={() => navigator.clipboard.writeText(translation.captionTranslate)}
                   className="text-gray-600 hover:text-blue-500"
                 >
                   <FaCopy size={20} />
@@ -112,18 +139,21 @@ export default function TranslatorContainer() {
               </div>
             </div>
             <div className="space-y-4">
-              {translation.original.split('\n').map((line, index) => (
-                <div key={index} className="space-y-2">
-                  <p className="text-gray-700">{line}</p>
-                  <p className="text-blue-600">
-                    {translation.translatedParallel.split('\n')[index]}
-                  </p>
-                </div>
+              {translation.captionTranslate.split('\n').map((line, index) => (
+                <p key={index} className={index % 2 === 0 ? "text-gray-700" : "text-blue-600"}>
+                  {line}
+                </p>
               ))}
             </div>
           </div>
         </div>
       )}
+
+      <TranslationHistory
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        onSelect={handleHistorySelect}
+      />
     </div>
   );
 } 

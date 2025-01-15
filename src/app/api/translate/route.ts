@@ -1,44 +1,41 @@
 import { NextResponse } from 'next/server';
-import axios from 'axios';
+import { createTranslationService } from '@/lib/translation/factory';
+import { saveTranslation } from '@/lib/db';
+
+const translationService = createTranslationService();
 
 export async function POST(request: Request) {
   try {
     const { text } = await request.json();
+    
+    if (!text || typeof text !== 'string') {
+      return NextResponse.json(
+        { error: 'Invalid input text' },
+        { status: 400 }
+      );
+    }
 
-    // 调用 DeepSeek API 获取两种翻译
-    const [completeResponse, parallelResponse] = await Promise.all([
-      axios.post('https://api.deepseek.com/v1/translate', {
-        text,
-        source_lang: 'zh',
-        target_lang: 'en',
-        mode: 'complete'
-      }, {
-        headers: {
-          'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }),
-      axios.post('https://api.deepseek.com/v1/translate', {
-        text,
-        source_lang: 'zh',
-        target_lang: 'en',
-        mode: 'parallel'
-      }, {
-        headers: {
-          'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      })
-    ]);
+    const result = await translationService.translate(text);
+    console.log("Translation result:", result);
 
-    return NextResponse.json({
-      completeTranslation: completeResponse.data.translation,
-      parallelTranslation: parallelResponse.data.translation,
-    });
-  } catch (error) {
+    // 直接在翻译成功后保存历史记录
+    try {
+      await saveTranslation({
+        origin: result.origin,
+        translate: result.translate,
+        captionTranslate: result.captionTranslate,
+        timestamp: new Date()
+      });
+    } catch (dbError) {
+      console.error('Failed to save translation history:', dbError);
+      // 继续返回翻译结果，即使保存历史失败
+    }
+
+    return NextResponse.json(result);
+  } catch (error: any) {
     console.error('Translation API error:', error);
     return NextResponse.json(
-      { error: 'Translation failed' },
+      { error: error.message || 'Translation failed' },
       { status: 500 }
     );
   }

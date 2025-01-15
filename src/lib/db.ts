@@ -1,41 +1,41 @@
-import { sql } from '@vercel/postgres';
+import { db } from './db/config';
 
 export async function saveTranslation(translation: {
-  original: string;
-  translatedParallel: string;
-  translatedComplete: string;
+  origin: string;
+  translate: string;
+  captionTranslate: string;
   timestamp: Date;
 }) {
   try {
-    await sql`
-      INSERT INTO translations (
+    const client = await db.connect();
+    await client.query(
+      `INSERT INTO translations (
         original_text,
-        translated_parallel,
-        translated_complete,
+        translated_text,
+        caption_translate,
         created_at
-      ) VALUES (
-        ${translation.original},
-        ${translation.translatedParallel},
-        ${translation.translatedComplete},
-        ${translation.timestamp}
-      )
-    `;
+      ) VALUES ($1, $2, $3, $4)`,
+      [
+        translation.origin,
+        translation.translate,
+        translation.captionTranslate,
+        translation.timestamp
+      ]
+    );
   } catch (error) {
     console.error('Database error:', error);
-    throw error;
   }
 }
 
 export async function getTranslationHistory() {
   try {
-    const { rows } = await sql`
-      SELECT * FROM translations
-      ORDER BY created_at DESC
-      LIMIT 50
-    `;
+    const client = await db.connect();
+    const { rows } = await client.query(
+      `SELECT * FROM translations ORDER BY created_at DESC LIMIT 50`
+    );
     return rows;
   } catch (error) {
     console.error('Database error:', error);
-    throw error;
+    return [];
   }
-} 
+}
