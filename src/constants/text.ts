@@ -54,5 +54,9 @@ export const TEXT = {
       zh: '加载中...',
       en: 'Loading...'
     }
+  },
+  translating: {
+    zh: '翻译中...',
+    en: 'Translating...'
   }
 } as const; 

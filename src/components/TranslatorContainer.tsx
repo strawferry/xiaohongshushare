@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaVolumeUp, FaHistory, FaCopy, FaUndo } from 'react-icons/fa';
+import { FaVolumeUp, FaHistory, FaCopy, FaUndo, FaSpinner } from 'react-icons/fa';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import TranslationHistory from './TranslationHistory';
 import { TEXT } from '@/constants/text';
@@ -18,14 +18,16 @@ export default function TranslatorContainer() {
   const [inputText, setInputText] = useState('');
   const [translation, setTranslation] = useState<Translation | null>(null);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
   const { speak } = useSpeechSynthesis();
 
   const handleTranslate = async () => {
-    if (!inputText.trim()) {
+    if (!inputText.trim() || isTranslating) {
       return;
     }
 
     try {
+      setIsTranslating(true);
       const response = await fetch('/api/translate', {
         method: 'POST',
         headers: {
@@ -47,6 +49,8 @@ export default function TranslatorContainer() {
       setTranslation(newTranslation);
     } catch (error) {
       console.error('Translation error:', error);
+    } finally {
+      setIsTranslating(false);
     }
   };
 
@@ -80,6 +84,7 @@ export default function TranslatorContainer() {
           placeholder={`${TEXT.placeholder.zh}\n${TEXT.placeholder.en}`}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          disabled={isTranslating}
         />
         
         <div className="flex justify-between mt-4">
@@ -87,6 +92,7 @@ export default function TranslatorContainer() {
             <button
               onClick={() => setIsHistoryOpen(true)}
               className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+              disabled={isTranslating}
             >
               <FaHistory className="mr-2" />
               <BilingualText 
@@ -98,6 +104,7 @@ export default function TranslatorContainer() {
             <button
               onClick={handleReset}
               className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+              disabled={isTranslating}
             >
               <FaUndo className="mr-2" />
               <BilingualText 
@@ -108,14 +115,28 @@ export default function TranslatorContainer() {
             </button>
           </div>
           <button
-            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+            className={`relative px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 
+              dark:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed
+              min-w-[120px] min-h-[64px]`}
             onClick={handleTranslate}
+            disabled={isTranslating || !inputText.trim()}
           >
-            <BilingualText 
-              zh={TEXT.translate.zh} 
-              en={TEXT.translate.en}
-              className="text-center text-white"
-            />
+            {isTranslating ? (
+              <div className="flex flex-col items-center justify-center">
+                <FaSpinner className="animate-spin mb-1" size={20} />
+                <BilingualText 
+                  zh="翻译中..."
+                  en="Translating..."
+                  className="text-center text-white"
+                />
+              </div>
+            ) : (
+              <BilingualText 
+                zh={TEXT.translate.zh} 
+                en={TEXT.translate.en}
+                className="text-center text-white"
+              />
+            )}
           </button>
         </div>
       </div>
