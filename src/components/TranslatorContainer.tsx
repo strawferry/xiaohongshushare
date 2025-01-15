@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaVolumeUp, FaHistory, FaCopy } from 'react-icons/fa';
+import { FaVolumeUp, FaHistory, FaCopy, FaUndo } from 'react-icons/fa';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import TranslationHistory from './TranslationHistory';
 
@@ -48,6 +48,11 @@ export default function TranslatorContainer() {
     }
   };
 
+  const handleReset = () => {
+    setInputText('');
+    setTranslation(null);
+  };
+
   const handleSpeak = (text: string) => {
     speak({ text });
   };
@@ -73,13 +78,22 @@ export default function TranslatorContainer() {
         />
         
         <div className="flex justify-between mt-4">
-          <button
-            onClick={() => setIsHistoryOpen(true)}
-            className="flex items-center px-4 py-2 text-gray-600 hover:text-blue-500"
-          >
-            <FaHistory className="mr-2" />
-            历史记录
-          </button>
+          <div className="flex space-x-4">
+            <button
+              onClick={() => setIsHistoryOpen(true)}
+              className="flex items-center px-4 py-2 text-gray-600 hover:text-blue-500"
+            >
+              <FaHistory className="mr-2" />
+              历史记录
+            </button>
+            <button
+              onClick={handleReset}
+              className="flex items-center px-4 py-2 text-gray-600 hover:text-blue-500"
+            >
+              <FaUndo className="mr-2" />
+              重置
+            </button>
+          </div>
           <button
             className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             onClick={handleTranslate}
