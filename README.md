@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 小红书中英文翻译
 
-## Getting Started
+## 主要功能点
 
-First, run the development server:
+1. 用户文本框中输入文本,通过 AI 对内容进行翻译;
+2. 翻译的输出格式分为两种显示,一种是直接整体翻译输出显示,另一种是根据内容段落,分为原内容一段,翻译内容换行一段,交叉显示,有点像双语字幕的形式;
+3. 翻译内容可以做点击语音播报出来;
+4. 翻译历史展示,翻译数据存储起来;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 技术选型
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. 使用 nextjs 的全栈模式去开发功能;
+2. 使用 DeepSeek 大语言模型对内容做 AI 翻译; [api 开发文档](https://api-docs.deepseek.com/zh-cn/)
+3. 部署到 vercel 上面,数据库使用 vercel-postgres 存储
