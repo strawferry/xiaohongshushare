@@ -16,9 +16,8 @@ export async function POST(request: Request) {
     }
 
     const result = await translationService.translate(text);
-    console.log("Translation result:", result);
-
-    // 直接在翻译成功后保存历史记录
+    
+    // 保存翻译历史
     try {
       await saveTranslation({
         origin: result.origin,
@@ -28,7 +27,7 @@ export async function POST(request: Request) {
       });
     } catch (dbError) {
       console.error('Failed to save translation history:', dbError);
-      // 继续返回翻译结果，即使保存历史失败
+      // 即使保存失败也继续返回翻译结果
     }
 
     return NextResponse.json(result);

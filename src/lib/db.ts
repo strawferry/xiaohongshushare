@@ -7,8 +7,7 @@ export async function saveTranslation(translation: {
   timestamp: Date;
 }) {
   try {
-    const client = await db.connect();
-    await client.query(
+    await db.query(
       `INSERT INTO translations (
         original_text,
         translated_text,
@@ -22,20 +21,21 @@ export async function saveTranslation(translation: {
         translation.timestamp
       ]
     );
+    console.log('Translation saved successfully');
   } catch (error) {
-    console.error('Database error:', error);
+    console.error('Failed to save translation:', error);
+    throw error;
   }
 }
 
 export async function getTranslationHistory() {
   try {
-    const client = await db.connect();
-    const { rows } = await client.query(
+    const { rows } = await db.query(
       `SELECT * FROM translations ORDER BY created_at DESC LIMIT 50`
     );
     return rows;
   } catch (error) {
-    console.error('Database error:', error);
+    console.error('Failed to get translation history:', error);
     return [];
   }
 }
