@@ -1,55 +1,51 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-
-const postsDirectory = path.join(process.cwd(), 'content/blog');
-
 export interface Post {
   slug: string;
   title: string;
   date: string;
   excerpt: string;
   content: string;
+  category: string;
+  tags: string[];
+}
+
+export interface PostMeta {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  category: string;
+  tags: string[];
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-
-    const processedContent = await remark()
-      .use(html)
-      .process(content);
-    const contentHtml = processedContent.toString();
-
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      excerpt: data.excerpt || '',
-      content: contentHtml,
-    };
-  } catch (error) {
-    return null;
-  }
+  const res = await fetch(`/api/blog?slug=${slug}`);
+  if (!res.ok) return null;
+  return res.json();
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPosts = await Promise.all(
-    fileNames
-      .filter(fileName => fileName.endsWith('.md'))
-      .map(async fileName => {
-        const slug = fileName.replace(/\.md$/, '');
-        const post = await getPostBySlug(slug);
-        return post;
-      })
-  );
+export async function getAllPosts(): Promise<PostMeta[]> {
+  const res = await fetch('/api/blog');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.posts;
+}
 
-  return allPosts
-    .filter((post): post is Post => post !== null)
-    .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
+export async function getAllCategories(): Promise<string[]> {
+  const res = await fetch('/api/blog');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.categories;
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const res = await fetch('/api/blog');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.tags;
+}
+
+export async function searchPosts(query: string): Promise<PostMeta[]> {
+  const res = await fetch(`/api/blog?query=${encodeURIComponent(query)}`);
+  if (!res.ok) return [];
+  return res.json();
 } 
