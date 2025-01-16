@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import BlogSort, { SortOption } from './BlogSort';
 
 interface BlogFiltersProps {
   categories: string[];
   tags: string[];
   onFilterChange: (category: string | null, selectedTags: string[]) => void;
+  onSort: (option: SortOption) => void;
 }
 
-export default function BlogFilters({ categories, tags, onFilterChange }: BlogFiltersProps) {
+export default function BlogFilters({ categories, tags, onFilterChange, onSort }: BlogFiltersProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -27,9 +29,10 @@ export default function BlogFilters({ categories, tags, onFilterChange }: BlogFi
 
   return (
     <div className="max-w-4xl mx-auto space-y-4 mb-6">
-      <div className="flex flex-wrap gap-2">
-        <button
-          onClick={() => handleCategoryChange(null)}
+      <div className="flex justify-between w-full">
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => handleCategoryChange(null)}
           className={`px-3 py-1 rounded-full text-sm
             ${!selectedCategory 
               ? 'bg-primary-500 text-white' 
@@ -51,6 +54,8 @@ export default function BlogFilters({ categories, tags, onFilterChange }: BlogFi
             {category}
           </button>
         ))}
+        </div>
+        <BlogSort onSort={onSort} />
       </div>
       <div className="flex flex-wrap gap-2">
         {tags.map(tag => (
