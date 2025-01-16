@@ -7,7 +7,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur">
       <nav className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-gray-900 dark:text-gray-100">
+          <Link href="/" className="text-gray-900 dark:text-gray-100 sm:ml-10">
             <BilingualText
               zh="首页"
               en="Home"
@@ -21,7 +21,7 @@ export default function Header() {
       />
           <Link 
             href="/blog" 
-            className="text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400"
+            className="text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 sm:mr-10"
           >
             <BilingualText
               zh="博客"
