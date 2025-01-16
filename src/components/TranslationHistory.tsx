@@ -71,8 +71,8 @@ ${TEXT.history_record.clearConfirm.en}`)) {
 
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
-            <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-xl transition-all">
-              <div className="flex items-center justify-between mb-4">
+            <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-3 sm:p-5 shadow-xl transition-all">
+              <div className="flex items-center justify-between mb-2 sm:mb-4">
                 <Dialog.Title as="h3">
                   <BilingualText
                     zh={TEXT.history_record.title.zh}
@@ -104,9 +104,9 @@ ${TEXT.history_record.clearConfirm.en}`)) {
                 </div>
               </div>
 
-              <div className="space-y-4 max-h-[60vh] overflow-y-auto">
+              <div className="space-y-2 sm:space-y-4 max-h-[60vh] overflow-y-auto">
                 {history.length === 0 ? (
-                  <div className="py-10 text-center">
+                  <div className="py-6 sm:py-10 text-center">
                     <BilingualText
                       zh={TEXT.history_record.empty.zh}
                       en={TEXT.history_record.empty.en}
@@ -124,9 +124,9 @@ ${TEXT.history_record.clearConfirm.en}`)) {
                           onSelect(item);
                           onClose();
                         }}
-                        className="w-full text-left p-4"
+                        className="w-full text-left p-2 sm:p-4"
                       >
-                        <div className="flex justify-between items-start mb-2">
+                        <div className="flex justify-between items-start mb-1 sm:mb-2">
                           <p className="text-gray-900 dark:text-gray-100 line-clamp-2">{item.original_text}</p>
                           <span className="text-sm text-gray-500 dark:text-gray-400 ml-4 whitespace-nowrap">
                             {formatDate(item.created_at)}

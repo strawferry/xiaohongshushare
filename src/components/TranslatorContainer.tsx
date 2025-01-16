@@ -90,10 +90,10 @@ export default function TranslatorContainer() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="max-w-4xl mx-auto space-y-2 sm:space-y-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-6">
         <textarea
-          className="w-full h-40 p-4 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent 
+          className="w-full h-24 sm:h-40 p-2 sm:p-4 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent 
             bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
             border-gray-300 dark:border-gray-600 
             placeholder-gray-500 dark:placeholder-gray-400"
@@ -103,11 +103,11 @@ export default function TranslatorContainer() {
           disabled={isTranslating}
         />
         
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-1 sm:mt-4">
           <div className="flex space-x-4">
             <button
               onClick={() => setIsHistoryOpen(true)}
-              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
+              className="flex items-center text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
               disabled={isTranslating}
             >
               <FaHistory className="mr-2" />
@@ -119,7 +119,7 @@ export default function TranslatorContainer() {
             </button>
             <button
               onClick={handleReset}
-              className="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
+              className="flex items-center text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400"
               disabled={isTranslating}
             >
               <FaUndo className="mr-2" />
@@ -162,10 +162,10 @@ export default function TranslatorContainer() {
       </div>
 
       {translation && (
-        <div className="space-y-6">
+        <div className="space-y-2 sm:space-y-3">
           {/* 整体翻译结果 */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-6">
+            <div className="flex justify-between items-center mb-2 sm:mb-4">
               <BilingualText 
                 zh={TEXT.fullTranslation.zh}
                 en={TEXT.fullTranslation.en}
@@ -186,7 +186,7 @@ export default function TranslatorContainer() {
                 </button>
               </div>
             </div>
-            <div className="space-y-4 text-gray-900 dark:text-gray-100">
+            <div className="space-y-2 sm:space-y-3 text-gray-900 dark:text-gray-100">
               {translation.translate.split('\n').map((line, index) => (
                 <p key={index}>{line}</p>
               ))}
@@ -194,8 +194,8 @@ export default function TranslatorContainer() {
           </div>
 
           {/* 双语对照翻译结果 */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <div className="flex justify-between items-center mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-6">
+            <div className="flex justify-between items-center mb-2 sm:mb-4">
               <BilingualText 
                 zh={TEXT.bilingualComparison.zh}
                 en={TEXT.bilingualComparison.en}
@@ -216,7 +216,7 @@ export default function TranslatorContainer() {
                 </button>
               </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-2 sm:space-y-3">
               {translation.captionTranslate.split('\n').map((line, index) => (
                 <p 
                   key={index} 
