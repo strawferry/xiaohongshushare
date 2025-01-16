@@ -7,7 +7,7 @@ export interface HistoryItem {
 }
 
 const LOCAL_STORAGE_KEY = 'translation_history';
-const MAX_LOCAL_HISTORY = 50;
+const MAX_LOCAL_HISTORY = 100;
 
 export class HistoryManager {
   private static generateId(): number {
@@ -33,7 +33,6 @@ export class HistoryManager {
         created_at: new Date().toISOString()
       };
 
-      // 添加到开头并限制数量
       const newHistory = [newItem, ...history].slice(0, MAX_LOCAL_HISTORY);
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newHistory));
       
@@ -44,11 +43,25 @@ export class HistoryManager {
     }
   }
 
+  static deleteHistoryItem(id: number) {
+    try {
+      const history = this.getLocalHistory();
+      const newHistory = history.filter(item => item.id !== id);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newHistory));
+      return true;
+    } catch (error) {
+      console.error('Failed to delete history item:', error);
+      return false;
+    }
+  }
+
   static clearLocalHistory() {
     try {
       localStorage.removeItem(LOCAL_STORAGE_KEY);
+      return true;
     } catch (error) {
       console.error('Failed to clear local history:', error);
+      return false;
     }
   }
 } 

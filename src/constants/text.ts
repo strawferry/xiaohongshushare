@@ -53,6 +53,22 @@ export const TEXT = {
     loading: {
       zh: '加载中...',
       en: 'Loading...'
+    },
+    delete: {
+      zh: '删除',
+      en: 'Delete'
+    },
+    deleteConfirm: {
+      zh: '确定要删除这条记录吗？',
+      en: 'Are you sure you want to delete this record?'
+    },
+    clearAll: {
+      zh: '清空全部',
+      en: 'Clear All'
+    },
+    clearConfirm: {
+      zh: '确定要清空所有历史记录吗？',
+      en: 'Are you sure you want to clear all history?'
     }
   },
   translating: {
