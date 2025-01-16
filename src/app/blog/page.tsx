@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPosts, getAllCategories, getAllTags, searchPosts, PostMeta } from '@/lib/blog';
 import { BilingualText } from '@/components/BilingualText';
@@ -8,6 +9,8 @@ import BlogSearch from '@/components/BlogSearch';
 import BlogFilters from '@/components/BlogFilters';
 
 export default function BlogList() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [posts, setPosts] = useState<PostMeta[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
@@ -21,12 +24,26 @@ export default function BlogList() {
         getAllTags(),
       ]);
       setPosts(allPosts);
-      setFilteredPosts(allPosts);
       setCategories(allCategories);
       setTags(allTags);
+
+      // 处理 URL 参数
+      const category = searchParams.get('category');
+      const tag = searchParams.get('tag');
+      let filtered = [...allPosts];
+      
+      if (category) {
+        filtered = filtered.filter(post => post.category === category);
+      }
+      
+      if (tag) {
+        filtered = filtered.filter(post => post.tags.includes(tag));
+      }
+      
+      setFilteredPosts(filtered);
     };
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
@@ -69,7 +86,7 @@ export default function BlogList() {
       />
 
       <div className="max-w-4xl mx-auto space-y-2 sm:space-y-4">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <Link 
             key={post.slug}
             href={`/blog/${post.slug}`}
