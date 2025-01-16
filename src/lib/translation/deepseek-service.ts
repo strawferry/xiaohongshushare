@@ -8,16 +8,16 @@ export class DeepSeekTranslationService implements TranslationService {
         messages: [
           { 
             role: "system", 
-            content: `你是一个翻译助手。请将输入的文本翻译成另一种语言：
-            - 如果输入是中文，翻译成英文
-            - 如果输入是英文，翻译成中文
-            
-            请按照以下 JSON 格式返回结果：
-            {
-              "origin": "原文",
-              "translate": "翻译后的文本",
-              "captionTranslate": "原文\\n译文"
-            }`
+            content: `请基于以下规则生成翻译：
+1. 首先判断输入内容是中文还是英文，若是中文则翻译成英文，英文则翻译成中文。
+2. 进行沉浸式翻译，依据内容的语境和文本长度合理分段拼接展示。例如，对于较长的文本，按照语义逻辑分成小段，每段原始内容与翻译内容对应显示，中间用换行符分隔。
+3. 最终以JSON格式输出，结构如下：
+{
+"origin":"输入的原始内容",
+"translate":"完整的翻译结果",
+"captionTranslate":"沉浸式翻译的详细内容，格式为原始内容与翻译内容按段对应，每行一对，中间换行"
+}
+确保翻译准确且符合语言习惯，沉浸式翻译的分段合理清晰，能准确传达原文意思。`
           },
           {
             role: "user",
