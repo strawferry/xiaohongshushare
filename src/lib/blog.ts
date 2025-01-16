@@ -8,6 +8,7 @@ export interface Post {
   content: string;
   category: string;
   tags: string[];
+  order: number;
 }
 
 export interface PostMeta {
@@ -17,6 +18,7 @@ export interface PostMeta {
   excerpt: string;
   category: string;
   tags: string[];
+  order: number;
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {

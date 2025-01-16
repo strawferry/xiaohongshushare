@@ -27,13 +27,14 @@ export class DeepSeekTranslationService implements TranslationService {
           }
         ],
         model: "deepseek-chat",
-        temperature: 0.3,
-        max_tokens: 2000
+        temperature: 1.3,
+        max_tokens: 8192
       });
 
       const content = completion.choices[0].message.content || '';
       
       try {
+        // console.log("🚀 ~ DeepSeekTranslationService ~ translate ~ content:", content)
         const result = JSON.parse(content) as TranslationResult;
         // 验证返回的数据格式是否正确
         if (!result.origin || !result.translate || !result.captionTranslate) {

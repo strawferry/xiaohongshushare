@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { FaSort } from 'react-icons/fa';
 
-export type SortOption = 'date-desc' | 'date-asc' | 'title-asc' | 'title-desc';
+export type SortOption = 'default' | 'date-desc' | 'date-asc' | 'title-asc' | 'title-desc';
 
 interface BlogSortProps {
   onSort: (option: SortOption) => void;
@@ -13,6 +13,7 @@ export default function BlogSort({ onSort }: BlogSortProps) {
   const [currentSort, setCurrentSort] = useState<SortOption>('date-desc');
 
   const sortOptions = [
+    { value: 'default', label: '默认排序' },
     { value: 'date-desc', label: '最新发布' },
     { value: 'date-asc', label: '最早发布' },
     { value: 'title-asc', label: '标题 A-Z' },

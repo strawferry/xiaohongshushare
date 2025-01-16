@@ -20,6 +20,7 @@ export interface Post {
   content: string;
   category: string;
   tags: string[];
+  order: number;
 }
 
 export interface PostMeta {
@@ -29,6 +30,7 @@ export interface PostMeta {
   excerpt: string;
   category: string;
   tags: string[];
+  order: number;
 }
 
 async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -50,6 +52,7 @@ async function getPostBySlug(slug: string): Promise<Post | null> {
       content: contentHtml,
       category: data.category || '未分类',
       tags: data.tags || [],
+      order: data.order || 0,
     };
   } catch (error) {
     return null;
@@ -95,7 +98,14 @@ export async function GET(request: Request) {
 
     const posts = allPosts
       .filter((post): post is PostMeta => post !== null)
-      .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
+      .sort((a, b) => {
+        // 首先按 order 排序
+        if (a.order !== b.order) {
+          return a.order - b.order;
+        }
+        // order 相同时，按日期排序
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
 
     if (query) {
       const searchTerms = query.toLowerCase().split(' ');
