@@ -21,7 +21,6 @@ export async function saveTranslation(translation: {
         translation.timestamp
       ]
     );
-    console.log('Translation saved successfully');
   } catch (error) {
     console.error('Failed to save translation:', error);
     throw error;
