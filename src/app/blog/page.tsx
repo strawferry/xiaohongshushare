@@ -7,6 +7,7 @@ import { getAllPosts, getAllCategories, getAllTags, searchPosts, PostMeta } from
 import { BilingualText } from '@/components/BilingualText';
 import BlogSearch from '@/components/BlogSearch';
 import BlogFilters from '@/components/BlogFilters';
+import BlogSort, { SortOption } from '@/components/BlogSort';
 
 export default function BlogList() {
   const router = useRouter();
@@ -15,6 +16,25 @@ export default function BlogList() {
   const [categories, setCategories] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<PostMeta[]>([]);
+  const [sortOption, setSortOption] = useState<SortOption>('date-desc');
+
+  // 排序函数
+  const sortPosts = (posts: PostMeta[], option: SortOption) => {
+    return [...posts].sort((a, b) => {
+      switch (option) {
+        case 'date-desc':
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        case 'date-asc':
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        case 'title-asc':
+          return a.title.localeCompare(b.title);
+        case 'title-desc':
+          return b.title.localeCompare(a.title);
+        default:
+          return 0;
+      }
+    });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,18 +60,19 @@ export default function BlogList() {
         filtered = filtered.filter(post => post.tags.includes(tag));
       }
       
-      setFilteredPosts(filtered);
+      // 应用默认排序
+      setFilteredPosts(sortPosts(filtered, sortOption));
     };
     fetchData();
-  }, [searchParams]);
+  }, [searchParams, sortOption]);
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) {
-      setFilteredPosts(posts);
+      setFilteredPosts(sortPosts(posts, sortOption));
       return;
     }
     const results = await searchPosts(query);
-    setFilteredPosts(results);
+    setFilteredPosts(sortPosts(results, sortOption));
   };
 
   const handleFilter = (category: string | null, selectedTags: string[]) => {
@@ -67,7 +88,12 @@ export default function BlogList() {
       );
     }
     
-    setFilteredPosts(filtered);
+    setFilteredPosts(sortPosts(filtered, sortOption));
+  };
+
+  const handleSort = (option: SortOption) => {
+    setSortOption(option);
+    setFilteredPosts(sortPosts(filteredPosts, option));
   };
 
   return (
@@ -83,6 +109,7 @@ export default function BlogList() {
         categories={categories}
         tags={tags}
         onFilterChange={handleFilter}
+        onSort={handleSort}
       />
 
       <div className="max-w-4xl mx-auto space-y-2 sm:space-y-4">
