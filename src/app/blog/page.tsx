@@ -21,6 +21,13 @@ export default function BlogList() {
   // 排序函数
   const sortPosts = (posts: PostMeta[], option: SortOption) => {
     return [...posts].sort((a, b) => {
+      // 如果不是按日期或标题排序，优先使用 order
+      if (!['date-desc', 'date-asc', 'title-asc', 'title-desc'].includes(option)) {
+        if (a.order !== b.order) {
+          return a.order - b.order;
+        }
+      }
+
       switch (option) {
         case 'date-desc':
           return new Date(b.date).getTime() - new Date(a.date).getTime();
