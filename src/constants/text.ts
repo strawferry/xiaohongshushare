@@ -1,7 +1,7 @@
 export const TEXT = {
   title: {
-    zh: '小红书中英文翻译',
-    en: 'Xiaohongshu CN-EN Translator'
+    zh: '小红书中英文互译',
+    en: 'Xiaohongshu CN ≒ EN Translator'
   },
   placeholder: {
     zh: '请输入要翻译的文本...',
