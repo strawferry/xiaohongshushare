@@ -30,8 +30,7 @@ export class DeepSeekTranslationService implements TranslationService {
       });
 
       const content = completion.choices[0].message.content || '';
-      console.log("Translation API response:", content);
-
+      
       try {
         const result = JSON.parse(content) as TranslationResult;
         // 验证返回的数据格式是否正确

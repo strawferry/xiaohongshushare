@@ -20,7 +20,6 @@ export async function createTables() {
           created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         )
       `);
-      console.log('Translations table created successfully');
     } else {
       console.log('Translations table already exists');
     }
