@@ -4,6 +4,15 @@ const nextConfig = {
     // 在生产构建时忽略 ESLint 错误
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // !! 警告 !!
+    // 危险区域，仅在你清楚风险的情况下使用
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    // 启用服务器组件
+    serverActions: true,
+  },
 }
 
 module.exports = nextConfig 

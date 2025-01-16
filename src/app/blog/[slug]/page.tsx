@@ -2,6 +2,33 @@ import Link from 'next/link';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { FaTag, FaFolder } from 'react-icons/fa';
+import { Metadata, ResolvingMetadata } from 'next';
+
+interface Props {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // 解构 props 以获取 slug
+  const { params: { slug } } = props;
+  
+  const post = await getPostBySlug(slug);
+  
+  if (!post) {
+    return {
+      title: '文章未找到',
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+  };
+}
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -10,8 +37,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug);
+export default async function BlogPost(props: Props) {
+  // 解构 props 以获取 slug
+  const { params: { slug } } = props;
+  
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
