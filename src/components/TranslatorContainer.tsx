@@ -8,6 +8,8 @@ import { TEXT } from '@/constants/text';
 import { BilingualText } from '@/components/BilingualText';
 import { HistoryManager } from '@/lib/historyManager';
 
+const MAX_CHARS = 1000;
+
 interface Translation {
   origin: string;
   translate: string;
@@ -28,6 +30,13 @@ export default function TranslatorContainer() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
   const { speak } = useSpeechSynthesis();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value;
+    if (newText.length <= MAX_CHARS) {
+      setInputText(newText);
+    }
+  };
 
   const handleTranslate = async () => {
     if (!inputText.trim() || isTranslating) {
@@ -89,21 +98,47 @@ export default function TranslatorContainer() {
     setInputText(historyItem.original_text);
   };
 
+  const charCount = inputText.length;
+  const isNearLimit = charCount > MAX_CHARS * 0.88;
+
   return (
     <div className="max-w-4xl mx-auto space-y-2 sm:space-y-4">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-6">
-        <textarea
-          className="w-full h-24 sm:h-40 p-2 sm:p-4 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent 
-            bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
-            border-gray-300 dark:border-gray-600 
-            placeholder-gray-500 dark:placeholder-gray-400"
-          placeholder={`${TEXT.placeholder.zh}\n${TEXT.placeholder.en}`}
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          disabled={isTranslating}
-        />
-        
-        <div className="flex justify-between mt-1 sm:mt-4">
+        <div className="relative">
+          <textarea
+            className="w-full h-24 sm:h-40 p-2 sm:p-4 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent 
+              bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+              border-gray-300 dark:border-gray-600 
+              placeholder-gray-500 dark:placeholder-gray-400"
+            placeholder={`${TEXT.placeholder.zh}\n${TEXT.placeholder.en}`}
+            value={inputText}
+            onChange={handleInputChange}
+            disabled={isTranslating}
+          />
+          
+          {/* 字符计数器 */}
+          <div className="absolute bottom-3 right-3 flex items-center justify-between text-sm mt-2">
+            <div className="text-gray-500 dark:text-gray-400">
+              {isNearLimit && charCount < MAX_CHARS && 
+                <span>接近字数限制</span>
+              }
+              {charCount >= MAX_CHARS &&
+                <span className="text-red-500 dark:text-red-400">已达到最大字数限制</span>
+              }
+            </div>
+            <div 
+              className={`px-2 py-0.5 rounded
+                ${isNearLimit 
+                  ? 'text-amber-500 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20' 
+                  : 'text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800'
+                }`}
+            >
+              {charCount}/{MAX_CHARS} 字
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between mt-4">
           <div className="flex space-x-4">
             <button
               onClick={() => setIsHistoryOpen(true)}
