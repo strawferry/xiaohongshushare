@@ -187,7 +187,7 @@ export default function TranslatorContainer() {
               </div>
             </div>
             <div className="space-y-2 sm:space-y-3 text-gray-900 dark:text-gray-100">
-              {translation.translate.split('\n').map((line, index) => (
+              {translation.translate.split('\n').filter(line => line.trim() !== '').map((line, index) => (
                 <p key={index}>{line}</p>
               ))}
             </div>
@@ -217,7 +217,7 @@ export default function TranslatorContainer() {
               </div>
             </div>
             <div className="space-y-2 sm:space-y-3">
-              {translation.captionTranslate.split('\n').map((line, index) => (
+              {translation.captionTranslate.split('\n').filter(line => line.trim() !== '').map((line, index) => (
                 <p 
                   key={index} 
                   className={
