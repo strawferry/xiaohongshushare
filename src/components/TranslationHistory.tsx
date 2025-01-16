@@ -22,20 +22,20 @@ export default function TranslationHistory({ isOpen, onClose, onSelect }: Transl
     const localHistory = HistoryManager.getLocalHistory();
     setHistory(localHistory);
 
-    // 然后尝试获取远程历史
-    try {
-      setLoading(true);
-      const response = await fetch('/api/translation-history');
-      const data = await response.json();
-      if (response.ok) {
-        setHistory(data);
-      }
-    } catch (error) {
-      console.error('Failed to fetch remote history:', error);
-      // 如果远程获取失败，继续使用本地历史
-    } finally {
-      setLoading(false);
-    }
+    // // 然后尝试获取远程历史
+    // try {
+    //   setLoading(true);
+    //   const response = await fetch('/api/translation-history');
+    //   const data = await response.json();
+    //   if (response.ok) {
+    //     setHistory(data);
+    //   }
+    // } catch (error) {
+    //   console.error('Failed to fetch remote history:', error);
+    //   // 如果远程获取失败，继续使用本地历史
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   useEffect(() => {
