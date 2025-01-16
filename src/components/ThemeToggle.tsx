@@ -24,10 +24,10 @@ export default function ThemeToggle() {
   };
 
   return (
-    <Menu as="div" className="fixed top-4 right-4 inline-block text-left">
+    <Menu as="div" className="fixed z-50 top-[70px] sm:top-[15px] right-1 inline-block text-left">
       <div>
         <Menu.Button className="flex items-center space-x-2 p-2 rounded-lg 
-          bg-white/80 dark:bg-gray-800/80 
+          bg-white/80 dark:bg-gray-800/80 sm:dark:bg-gray-900/80
           text-gray-700 dark:text-gray-200 
           hover:bg-white dark:hover:bg-gray-800
           shadow-lg backdrop-blur">

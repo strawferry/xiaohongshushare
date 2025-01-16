@@ -6,6 +6,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import Footer from '@/components/Footer';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Header from '@/components/Header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -23,8 +24,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <main className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
+            <Header />
             <ThemeToggle />
-            <div className="flex-1">
+            <div className="flex-1 pt-16">
               {children}
             </div>
             <Footer />

@@ -11,17 +11,22 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@mdx-js/loader": "^3.1.0",
+    "@next/mdx": "^15.1.4",
     "@vercel/analytics": "^1.4.1",
     "@vercel/postgres": "^0.10.0",
     "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "next": "15.1.4",
     "openai": "^4.78.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-speech-kit": "^3.0.1",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
