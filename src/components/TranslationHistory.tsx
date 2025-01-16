@@ -15,7 +15,6 @@ interface TranslationHistoryProps {
 
 export default function TranslationHistory({ isOpen, onClose, onSelect }: TranslationHistoryProps) {
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const fetchHistory = () => {
     const localHistory = HistoryManager.getLocalHistory();

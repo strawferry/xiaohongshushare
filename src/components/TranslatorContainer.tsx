@@ -15,6 +15,13 @@ interface Translation {
   timestamp: Date;
 }
 
+interface HistorySelectItem {
+  original_text: string;
+  translated_text: string;
+  caption_translate: string;
+  created_at: string;
+}
+
 export default function TranslatorContainer() {
   const [inputText, setInputText] = useState('');
   const [translation, setTranslation] = useState<Translation | null>(null);
@@ -72,7 +79,7 @@ export default function TranslatorContainer() {
     speak({ text });
   };
 
-  const handleHistorySelect = (historyItem: any) => {
+  const handleHistorySelect = (historyItem: HistorySelectItem) => {
     setTranslation({
       origin: historyItem.original_text,
       translate: historyItem.translated_text,
