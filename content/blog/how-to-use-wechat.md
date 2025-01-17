@@ -1,24 +1,21 @@
 ---
 title: '如何像本地人一样使用微信 | How to use WeChat like a local'
-date: '2024-02-22'
+date: '2025-01-17'
 excerpt: '详细介绍微信的基本功能和使用方法 | A comprehensive guide on using WeChat and its features'
 category: '生活指南'
 tags: ['微信', '教程', '生活技巧']
-order: 1
+order: 5
 ---
-
-# 如何像本地人一样使用微信
-# How to use WeChat like a local
 
 在中国生活或旅行的人很快就会意识到他们需要微信，因为这是最简单的沟通方式。微信是一个超级应用程序，除了连接人们之外，还提供许多功能。
 
 Everyone living in or traveling in China learns quickly that they need WeChat as it is the easiest way to communicate. WeChat is a super app that offers many functions aside from connecting people.
 
-## 如何开始使用微信
-## How to get started with WeChat
+### 如何开始使用微信
+#### How to get started with WeChat
 
-### 第 1 步：下载微信应用
-### Step 1: Download the WeChat app
+#### 第 1 步：下载微信应用
+##### Step 1: Download the WeChat app
 
 从您的应用商店下载微信应用。
 
@@ -26,16 +23,16 @@ Download the WeChat app from your app store.
 
 ![下载微信](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-07-Download-the-WeChat-app.png)
 
-### 第 2 步：注册并创建账户
-### Step 2: Register and create an account
+#### 第 2 步：注册并创建账户
+##### Step 2: Register and create an account
 
 创建用户名和密码，并填写您的个人信息。外国人需要扫描护照身份页面以验证身份。
 
 Create a username and password, and fill out your personal information. Foreigners are required to scan the passport ID page to verify their identity.
 
 ![注册并创建账户](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-33-Register-and-create-an-account.jpg)
-### 第 3 步：添加好友
-### Step 3: Add friends
+#### 第 3 步：添加好友
+##### Step 3: Add friends
 
 您可以开始发送和接收好友请求，这些请求会显示为通知。如果您想发送好友请求，点击右上角的"+"和"添加联系人"，然后在搜索栏中输入您朋友的名字或电话号码。如果找到正确的人，您可以发送请求。
 
@@ -43,8 +40,8 @@ You can begin sending and receiving friend requests from people that will show u
 
 ![添加好友](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-48-Add-friends.png)
 
-### 第 4 步：开始聊天
-### Step 4: Start chatting
+#### 第 4 步：开始聊天
+##### Step 4: Start chatting
 
 现在您可以开始聊天了。要开始通信，打开您的联系人列表并选择您想要发送文字或语音消息的人。
 
@@ -64,11 +61,11 @@ WeChat is available in multiple languages. You can click "General" - "Multilangu
 
 ![语言设置](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-47-53-Translate-settings.jpg)
 
-## 微信的功能
-## WeChat's Features
+### 微信的功能
+#### WeChat's Features
 
-### 1. 支付账单
-### 1. Pay bills
+#### 1. 支付账单
+##### 1. Pay bills
 
 使用微信钱包可以轻松支付一切。微信钱包允许您支付账单、向朋友转账、支付电影票和餐费等等。
 
@@ -85,8 +82,8 @@ You can call a taxi or ride share and pay for it using Ride Hailing in WeChat Se
 
 ![叫车服务](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-49-12-Call-a-driver.jpg)
 
-### 3. 翻译功能
-### 3. Translation
+#### 3. 翻译功能
+##### 3. Translation
 
 不会读写中文可能是一个巨大的障碍。微信可以让这变得更容易，因为您可以扫描中文文本并自动将其翻译成您的母语。
 
@@ -98,8 +95,8 @@ Just click "+" and "Scan" on the right top corner, select "Translate" and then t
 
 ![扫描翻译](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-49-41-Translation.jpg)
 
-### 4. 预订旅行
-### 4. Book travel
+#### 4. 预订旅行
+##### 4. Book travel
 
 如果您想预订火车或机票，微信很有帮助。点击微信服务中的"火车票机票"，搜索火车或机票信息，并预订您的票。
 

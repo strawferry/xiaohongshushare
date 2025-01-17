@@ -14,18 +14,20 @@ export default function Header() {
               className="text-sm"
             />
           </Link>
-          <BilingualText 
-        zh={TEXT.title.zh}
-        en={TEXT.title.en}
-        className="text-xl font-bold text-center"
-      />
-          <Link 
-            href="/blog" 
+          <Link href="/" >
+            <BilingualText
+              zh={TEXT.title.zh}
+              en={TEXT.title.en}
+              className="text-xl font-bold text-center"
+            />
+          </Link>
+          <Link
+            href="/blog"
             className="text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 sm:mr-10"
           >
             <BilingualText
-              zh="博客"
-              en="Blog"
+              zh="教程"
+              en="Tutorials"
               className="text-sm"
             />
           </Link>

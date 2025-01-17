@@ -1,24 +1,21 @@
 ---
 title: '如何在中国使用支付宝 | How to use Alipay in China'
-date: '2024-03-12'
+date: '2025-01-16'
 excerpt: '详细介绍支付宝的注册流程和主要功能 | A comprehensive guide on setting up and using Alipay'
 category: '生活指南'
 tags: ['支付宝', '教程', '生活技巧', '移动支付']
 order: 2
 ---
 
-# 如何在中国使用支付宝
-# How to use Alipay in China
-
 支付宝是中国最受欢迎的移动支付应用之一。本指南将帮助您了解如何设置和使用支付宝。
 
 Alipay is one of the most popular mobile payment apps in China. This guide will help you understand how to set up and use Alipay.
 
-## 如何开始使用支付宝
-## How to get started with Alipay
+### 如何开始使用支付宝
+#### How to get started with Alipay
 
-### 第 1 步：下载支付宝
-### Step 1: Download Alipay
+#### 第 1 步：下载支付宝
+##### Step 1: Download Alipay
 
 从应用商店下载支付宝应用。
 
@@ -26,8 +23,8 @@ Download the Alipay app from your app store.
 
 ![下载支付宝](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-06-52-Download-the-Alipay-app.png)
 
-### 第 2 步：注册账户
-### Step 2: Register an account
+#### 第 2 步：注册账户
+##### Step 2: Register an account
 
 1. 打开支付宝应用
 2. 点击"更多"，然后选择"语言"将其更改为英语
@@ -50,8 +47,8 @@ Download the Alipay app from your app store.
 ![注册账户](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-07-21-Register-for-an-Alipay-account-using-your-phone-number.png)
 
 
-### 第 3 步：添加支付方式
-### Step 3: Add payment method
+#### 第 3 步：添加支付方式
+##### Step 3: Add payment method
 
 
 ![个人页面](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-08-17-Alipay-acount.png)
@@ -76,11 +73,11 @@ You can add international credit cards (Visa/Mastercard) or debit cards:
 
 ![添加支付方式](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-12-20-Add-Bank-Card.png)
 
-## 支付宝的主要功能
-## Main features of Alipay
+### 支付宝的主要功能
+#### Main features of Alipay
 
-### 1. 扫码支付
-### 1. Scan to pay
+#### 1. 扫码支付
+##### 1. Scan to pay
 
 在商店购物时，您可以：
 - 扫描商家的二维码
@@ -96,8 +93,8 @@ When shopping in stores, you can:
 
 ![扫码支付](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-28-48-scan-to-pay.png)
 
-### 2. 转账功能
-### 2. Transfer money
+#### 2. 转账功能
+##### 2. Transfer money
 
 您可以轻松地向其他支付宝用户转账：
 1. 点击主页的"Transfer"
@@ -114,8 +111,8 @@ You can easily transfer money to other Alipay users:
 4. Confirm transfer
 
 
-### 3. 生活服务
-### 3. Lifestyle services
+#### 3. 生活服务
+##### 3. Lifestyle services
 
 支付宝提供多种生活服务：
 - 充值手机话费
@@ -137,8 +134,8 @@ Alipay offers various lifestyle services:
 
 ![生活服务](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-33-24-VUChT9.png)
 
-### 4. 交通出行
-### 4. Transportation
+#### 4. 交通出行
+##### 4. Transportation
 
 支付宝可以帮助您：
 - 购买火车票和机票
@@ -156,8 +153,8 @@ Alipay can help you:
 
 
 
-## 使用提示
-## Usage tips
+#### 使用提示
+##### Usage tips
 
 1. 保持手机网络通畅
 2. 确保手机电量充足
@@ -173,8 +170,8 @@ Alipay can help you:
 4. Keep payment password secure
 5. Pay attention to transaction notifications
 
-## 安全建议
-## Security tips
+#### 安全建议
+##### Security tips
 
 1. 启用指纹/面部识别支付
 2. 定期更新支付密码

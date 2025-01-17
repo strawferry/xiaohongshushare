@@ -1,14 +1,11 @@
 ---
 title: '如何设置微信支付和绑定银行卡 | How to Set Up WeChat Pay and Link Bank Cards'
-date: '2024-03-17'
+date: '2025-01-16'
 excerpt: '详细介绍如何为外国人设置微信支付和绑定银行卡 | A detailed guide on setting up WeChat Pay and linking bank cards for foreigners'
 category: '生活指南'
 tags: ['微信支付', '教程', '生活技巧', '移动支付']
 order: 3
 ---
-
-# 如何设置微信支付和绑定银行卡
-# How to Set Up WeChat Pay and Link Bank Cards
 
 ![微信支付](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-19-26-mkmKqF.png)
 
@@ -16,8 +13,8 @@ order: 3
 
 Foreigners can sign up for WeChat Pay and it's a breeze, although there are a few issues to watch out for. This guide will walk you through the process step by step.
 
-## 开始之前的准备
-## Before You Start
+### 开始之前的准备
+#### Before You Start
 
 您需要：
 - 一个微信账号
@@ -33,11 +30,11 @@ You'll need:
 - The phone number registered with your bank
 - Your passport
 
-## 设置步骤
-## Setup Steps
+### 设置步骤
+#### Setup Steps
 
 ### 第 1 步：打开微信钱包
-### Step 1: Open WeChat Wallet
+#### Step 1: Open WeChat Wallet
 
 点击"我"标签页中的"钱包"图标来启用微信支付。如果找不到钱包选项，可能是因为您的微信账号注册使用的是国外手机号。这种情况下，您需要先让朋友给您转一笔钱来激活钱包功能。
 
@@ -46,7 +43,7 @@ Tap on the Wallet icon in the "Me" tab to bring up WeChat Pay. If you can't find
 ![打开微信钱包](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-01-ljwibK.png)
 
 ### 第 2 步：验证身份并选择添加银行卡
-### Step 2: Verify and Select Add New Card
+#### Step 2: Verify and Select Add New Card
 
 从这里开始，流程基本相同。您需要一个与护照关联的中国大陆银行账户。当您将银行卡关联到微信支付时，也是在确认您的身份。
 
@@ -59,7 +56,7 @@ Tap "Add a Card" from the WeChat Wallet section or from the popup that you get w
 ![添加银行卡](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-33-ZFxooh.png)
 
 ### 第 3 步：输入银行卡信息并设置支付密码
-### Step 3: Enter Bank Information and Set Pin Code
+#### Step 3: Enter Bank Information and Set Pin Code
 
 1. 输入相关信息。如果您是外国护照持有者，请选择"护照"作为证件类型
 2. 确保输入的信息与银行账户中的完全一致。这可能意味着您需要使用大写字母输入姓名
@@ -78,7 +75,7 @@ Tap "Add a Card" from the WeChat Wallet section or from the popup that you get w
 ![设置支付密码](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-50-CBwhQu.png)
 
 ### 第 4 步：检查您的银行卡并添加其他卡片
-### Step 4: Check Your Bank Card and Add Additional Cards
+#### Step 4: Check Your Bank Card and Add Additional Cards
 
 如果之前"钱包"选项没有出现在"我"标签页中，现在应该会出现了。点击"银行卡"查看已关联到您微信支付账户的银行卡。您也可以在这里添加其他银行卡或Visa卡。
 
@@ -90,8 +87,8 @@ Money that WeChat friends send to you will end up in your balance. You can withd
 
 ![查看银行卡](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-21-07-k25JD3.png)
 
-## 使用提示
-## Usage Tips
+### 使用提示
+#### Usage Tips
 
 1. 确保您的银行卡已开通网上支付功能
 2. 保持手机号码畅通，这是接收验证码的必要条件
@@ -107,8 +104,8 @@ Money that WeChat friends send to you will end up in your balance. You can withd
 4. Remember your 6-digit payment pin as you'll use it frequently
 5. Regularly check your transaction history for security
 
-## 完成设置后
-## After Setup
+### 完成设置后
+#### After Setup
 
 现在您可以使用微信支付：
 - 在商店扫码支付

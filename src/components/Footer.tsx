@@ -39,11 +39,10 @@ export default function Footer() {
             <FaGithub className="mr-1" />
             ferryvip
           </Link>
-          <span>·</span>
           <Link 
             href="/about" 
             target="_blank"
-            className="hover:text-primary-500 dark:hover:text-primary-400"
+            className="text-primary-500 dark:hover:text-primary-400"
           >
             about author
           </Link>
