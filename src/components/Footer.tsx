@@ -41,11 +41,11 @@ export default function Footer() {
           </Link>
           <span>·</span>
           <Link 
-            href="https://blog.ferryvip.com/" 
+            href="/about" 
             target="_blank"
             className="hover:text-primary-500 dark:hover:text-primary-400"
           >
-            Author Blog
+            about author
           </Link>
         </div>
       </div>
