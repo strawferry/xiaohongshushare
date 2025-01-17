@@ -7,6 +7,8 @@ import TranslationHistory from './TranslationHistory';
 import { TEXT } from '@/constants/text';
 import { BilingualText } from '@/components/BilingualText';
 import { HistoryManager } from '@/lib/historyManager';
+import { useAnalytics } from '@/hooks/useAnalytics';
+import { useClarity } from '@/hooks/useClarity';
 
 const MAX_CHARS = 1000;
 
@@ -30,6 +32,8 @@ export default function TranslatorContainer() {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
   const { speak } = useSpeechSynthesis();
+  const { trackEvent: trackGAEvent } = useAnalytics();
+  const { trackEvent: trackClarityEvent } = useClarity();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
@@ -43,8 +47,19 @@ export default function TranslatorContainer() {
       return;
     }
 
+    const startTime = Date.now();
+
     try {
       setIsTranslating(true);
+      
+      // 跟踪翻译开始
+      trackGAEvent('translation_start', {
+        text_length: inputText.length
+      });
+      trackClarityEvent('translation_start', {
+        text_length: inputText.length
+      });
+
       const response = await fetch('/api/translate', {
         method: 'POST',
         headers: {
@@ -55,6 +70,13 @@ export default function TranslatorContainer() {
       
       const data = await response.json();
       if (!response.ok) {
+        // 跟踪翻译错误
+        trackGAEvent('translation_error', {
+          error: data.error
+        });
+        trackClarityEvent('translation_error', {
+          error: data.error
+        });
         throw new Error(data.error || 'Translation failed');
       }
 
@@ -64,6 +86,18 @@ export default function TranslatorContainer() {
       };
       
       setTranslation(newTranslation);
+
+      const responseTime = Date.now() - startTime;
+
+      // 跟踪翻译成功
+      trackGAEvent('translation_success', {
+        text_length: inputText.length,
+        response_time: responseTime
+      });
+      trackClarityEvent('translation_success', {
+        text_length: inputText.length,
+        response_time: responseTime
+      });
 
       // 保存到本地历史
       HistoryManager.addToLocalHistory({
