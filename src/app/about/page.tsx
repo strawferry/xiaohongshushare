@@ -51,14 +51,14 @@ export default function AboutPage() {
                             </h2>
                             <p className="mb-4">
                                 <BilingualText
-                                    zh="一名全栈开发者，热爱编程和新技术。目前专注于 React、React Native 和 Node.js 开发。"
-                                    en="A full-stack developer passionate about programming and new technologies. Currently focusing on React, React Native, and Node.js development."
+                                    zh="一名全栈开发者来自中国 🇨🇳 北京，热爱编程和新技术。目前专注于 React、React Native 和 Node.js 开发。"
+                                    en="A full-stack developer from Beijing, China 🇨🇳, passionate about programming and new technologies. Currently focusing on React, React Native, and Node.js development."
                                 />
                             </p>
                         </div>
 
                         {/* 技术栈 */}
-                        <div>
+                        {/* <div>
                             <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                                 <BilingualText
                                     zh="🛠️ 技术栈"
@@ -80,36 +80,63 @@ export default function AboutPage() {
                                     </span>
                                 ))}
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* 个人兴趣爱好介绍 */}
                         <div>
                             <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                                 <BilingualText
-                                    zh="🚀 项目经历"
-                                    en="🚀 Projects"
+                                    zh="🌟 兴趣爱好"
+                                    en="🌟 Interests & Community"
                                 />
                             </h2>
+                            <p className="mb-4">
+                                <BilingualText
+                                    zh="除了编程，我还热衷于："
+                                    en="Besides programming, I'm passionate about:"
+                                />
+                            </p>
                             <ul className="list-disc list-inside space-y-2">
-                                <li>
                                     <BilingualText
-                                        zh="小红书中英文互译 - AI 驱动的翻译工具"
-                                        en="Xiaohongshu Translator - AI-powered translation tool"
+                                        zh="交朋友 - 喜欢认识来自不同背景的朋友"
+                                        en="Making Friends - Love meeting people from different backgrounds"
                                     />
-                                </li>
-                                <li>
                                     <BilingualText
-                                        zh="React Native 移动应用开发"
-                                        en="React Native Mobile App Development"
+                                        zh="分享知识 - 乐于分享技术经验和生活技巧"
+                                        en="Knowledge Sharing - Enjoy sharing technical experience and life tips"
                                     />
-                                </li>
-                                <li>
                                     <BilingualText
-                                        zh="企业级 Web 应用开发"
-                                        en="Enterprise Web Application Development"
+                                        zh="互助学习 - 相信在交流中共同进步"
+                                        en="Mutual Learning - Believe in growing together through communication"
                                     />
-                                </li>
                             </ul>
+                            <div className="mt-6">
+                                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+                                    <BilingualText
+                                        zh="🤝 加入我们的社群"
+                                        en="🤝 Join Our Community"
+                                    />
+                                </h3>
+                                <p className="mb-4">
+                                    <BilingualText
+                                        zh="我们有一个活跃的学习交流群，欢迎加入："
+                                        en="We have an active learning community, welcome to join:"
+                                    />
+                                </p>
+                                <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/18-12-14-cdWrnO.jpg" alt="wechat group" className='w-1/2 mx-auto rounded-lg' />
+                                <ul className="list-disc list-inside space-y-2 mb-4">
+                                        <BilingualText
+                                            zh="互相学习和分享经验,分享生活技巧和实用工具"
+                                            en="Learn from and share experiences with each other, share life tips and useful tools"
+                                        />
+                                </ul>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">
+                                    <BilingualText
+                                        zh="* 如果群已满，可以添加我的个人微信，我会帮您加入群聊"
+                                        en="* If the group is full, you can add my personal WeChat and I'll help you join"
+                                    />
+                                </p>
+                            </div>
                         </div>
 
                         {/* 联系方式 */}
@@ -126,14 +153,14 @@ export default function AboutPage() {
                                     en="If you're interested in me or my projects, or want to collaborate, feel free to reach out:"
                                 />
                             </p>
-                            <ul className="list-disc list-inside mt-2">
-                                <li>Email: ferryvip@163.com</li>
-                                <li>GitHub: @strawferry</li>
-                            </ul>
                             <div className="flex justify-center">
                                 <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-20-16-WeChat.png" alt="wechat" className='w-1/2 mr-6 rounded-lg' />
                                 <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-18-25-xiaohongshu.png" alt="xiaohongshu" className='w-1/2 rounded-lg' />
                             </div>
+                            <ul className="list-disc list-inside mt-2">
+                                <li>Email: ferryvip@163.com</li>
+                                <li>GitHub: @strawferry</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
