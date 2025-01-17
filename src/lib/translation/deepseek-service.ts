@@ -1,5 +1,8 @@
 import { TranslationService, TranslationResult } from './types';
 import { openai } from './config';
+import { FeiShuBot } from '../feishu/bot';
+
+const bot = new FeiShuBot(process.env.FEISHU_BOT_WEBHOOK || '');
 
 export class DeepSeekTranslationService implements TranslationService {
   async translate(text: string): Promise<TranslationResult> {
@@ -32,9 +35,8 @@ export class DeepSeekTranslationService implements TranslationService {
       });
 
       const content = completion.choices[0].message.content || '';
-      
+      console.log("🚀 ~ DeepSeekTranslationService ~ translate ~ content:", content)
       try {
-        // console.log("🚀 ~ DeepSeekTranslationService ~ translate ~ content:", content)
         const result = JSON.parse(content) as TranslationResult;
         // 验证返回的数据格式是否正确
         if (!result.origin || !result.translate || !result.captionTranslate) {
@@ -42,16 +44,28 @@ export class DeepSeekTranslationService implements TranslationService {
         }
         return result;
       } catch (parseError) {
-        console.error('Failed to parse translation result:', parseError, content);
-        // 如果解析失败，返回一个基本的格式
+        // 发送解析错误到飞书
+        await bot.sendError(parseError as Error, {
+          content,
+          originalText: content,
+          type: 'parse_error'
+        });
+
+        // 返回基本格式
         const translatedText = content.replace(/[{}"\\]/g, '').trim();
         return {
-          origin: text,
+          origin: content,
           translate: translatedText,
           captionTranslate: `${text}\n${translatedText}`
         };
       }
     } catch (error) {
+      // 发送翻译错误到飞书
+      await bot.sendError(error as Error, {
+        originalText: text,
+        type: 'translation_error'
+      });
+      
       console.error('DeepSeek translation error:', error);
       throw new Error('Translation failed');
     }
