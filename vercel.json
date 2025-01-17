@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "app/api/translate/**/*": {
+      "maxDuration": 60
+    },
+    "app/api/blog/**/*": {
+      "maxDuration": 30
+    },
+    "app/api/translation-history/**/*": {
+      "maxDuration": 10
+    }
+  }
+} 
