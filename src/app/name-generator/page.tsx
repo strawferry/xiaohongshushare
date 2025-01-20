@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import { BilingualText } from '@/components/BilingualText';
-import { FaSpinner, FaCopy, FaVolumeUp } from 'react-icons/fa';
+import { FaSpinner, FaCopy, FaVolumeUp, FaHistory } from 'react-icons/fa';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import Toast from '@/components/Toast';
+import { nameGeneratorOptions } from '@/constants/name-generator-options';
+import NameHistoryManager, { NameHistoryItem } from '@/lib/nameHistoryManager';
+import NameHistoryDialog from '@/components/NameHistoryDialog';
 
 interface NameResult {
   name: string;
@@ -35,38 +38,7 @@ export default function NameGeneratorPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { speak } = useSpeechSynthesis();
-
-  const ageRanges = [
-    { value: '0-17', label: { zh: '0-17岁', en: '0-17 years' } },
-    { value: '18-30', label: { zh: '18-30岁', en: '18-30 years' } },
-    { value: '31-50', label: { zh: '31-50岁', en: '31-50 years' } },
-    { value: '50+', label: { zh: '50岁以上', en: '50+ years' } },
-  ];
-
-  const styles = [
-    { value: 'traditional', label: { zh: '传统典雅', en: 'Traditional & Elegant' } },
-    { value: 'modern', label: { zh: '现代时尚', en: 'Modern & Fashionable' } },
-    { value: 'literary', label: { zh: '文艺诗意', en: 'Literary & Poetic' } },
-    { value: 'simple', label: { zh: '简约大方', en: 'Simple & Graceful' } },
-  ];
-
-  const personalities = [
-    { value: 'confident', label: { zh: '自信', en: 'Confident' } },
-    { value: 'gentle', label: { zh: '温和', en: 'Gentle' } },
-    { value: 'creative', label: { zh: '创意', en: 'Creative' } },
-    { value: 'strong', label: { zh: '坚强', en: 'Strong' } },
-    { value: 'wise', label: { zh: '智慧', en: 'Wise' } },
-    { value: 'cheerful', label: { zh: '开朗', en: 'Cheerful' } },
-  ];
-
-  const interests = [
-    { value: 'art', label: { zh: '艺术', en: 'Art' } },
-    { value: 'science', label: { zh: '科学', en: 'Science' } },
-    { value: 'nature', label: { zh: '自然', en: 'Nature' } },
-    { value: 'music', label: { zh: '音乐', en: 'Music' } },
-    { value: 'sports', label: { zh: '运动', en: 'Sports' } },
-    { value: 'literature', label: { zh: '文学', en: 'Literature' } },
-  ];
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,6 +62,7 @@ export default function NameGeneratorPage() {
       const data = await response.json();
       if (Array.isArray(data) && data.length > 0) {
         setResults(data);
+        NameHistoryManager.saveHistory(formData, data);
       } else {
         setError('未能生成名字，请重试 / Failed to generate names, please try again');
       }
@@ -115,190 +88,209 @@ export default function NameGeneratorPage() {
     speak({ text });
   };
 
+  const handleHistorySelect = (item: NameHistoryItem) => {
+    setFormData(item.options);
+    setResults(item.results);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sm:p-8">
-          <h1 className="text-2xl font-bold text-center mb-8">
-            <BilingualText
-              zh="中文起名生成器"
-              en="Chinese Name Generator"
-            />
-          </h1>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold text-center">
+              <BilingualText
+                zh="中文起名生成器"
+                en="Chinese Name Generator"
+              />
+            </h1>
+            <button
+              onClick={() => setIsHistoryOpen(true)}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary-500 
+                dark:hover:text-primary-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+              title="历史记录 / History"
+            >
+              <FaHistory size={20} />
+            </button>
+          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* 性别选择 */}
-            <div>
-              <label className="block mb-2">
-                <BilingualText
-                  zh="性别"
-                  en="Gender"
-                  className="text-lg font-medium"
-                />
-              </label>
-              <div className="flex gap-4">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    checked={formData.gender === 'male'}
-                    onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
-                    className="mr-2"
+          <form onSubmit={handleSubmit} className="space-y-3">
+            {/* 基本选项行 */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* 性别选择 */}
+              <div>
+                <label className="block mb-0.5 text-sm">
+                  <BilingualText
+                    zh="性别"
+                    en="Gender"
+                    className="text-xs font-medium"
                   />
-                  <BilingualText zh="男" en="Male" />
                 </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    checked={formData.gender === 'female'}
-                    onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
-                    className="mr-2"
+                <div className="flex gap-3">
+                  <label className="inline-flex items-center text-sm">
+                    <input
+                      type="radio"
+                      value="male"
+                      checked={formData.gender === 'male'}
+                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
+                      className="mr-2"
+                    />
+                    <BilingualText zh="男" en="Male" />
+                  </label>
+                  <label className="inline-flex items-center text-sm">
+                    <input
+                      type="radio"
+                      value="female"
+                      checked={formData.gender === 'female'}
+                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
+                      className="mr-2"
+                    />
+                    <BilingualText zh="女" en="Female" />
+                  </label>
+                </div>
+              </div>
+
+              {/* 年龄范围 */}
+              <div>
+                <label className="block mb-0.5 text-sm">
+                  <BilingualText
+                    zh="年龄范围"
+                    en="Age Range"
+                    className="text-xs font-medium"
                   />
-                  <BilingualText zh="女" en="Female" />
                 </label>
+                <select
+                  value={formData.age}
+                  onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                  className="w-full py-1 px-2 rounded-md border border-gray-300 dark:border-gray-600 
+                    bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                >
+                  {nameGeneratorOptions.ageRanges.map((range) => (
+                    <option key={range.value} value={range.value}>
+                      {range.label.zh} / {range.label.en}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* 名字风格 */}
+              <div>
+                <label className="block mb-0.5 text-sm">
+                  <BilingualText
+                    zh="名字风格"
+                    en="Name Style"
+                    className="text-xs font-medium"
+                  />
+                </label>
+                <select
+                  value={formData.style}
+                  onChange={(e) => setFormData({ ...formData, style: e.target.value })}
+                  className="w-full py-1 px-2 rounded-md border border-gray-300 dark:border-gray-600 
+                    bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                >
+                  {nameGeneratorOptions.styles.map((style) => (
+                    <option key={style.value} value={style.value}>
+                      {style.label.zh} / {style.label.en}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
-            {/* 年龄范围 */}
-            <div>
-              <label className="block mb-2">
-                <BilingualText
-                  zh="年龄范围"
-                  en="Age Range"
-                  className="text-lg font-medium"
-                />
-              </label>
-              <select
-                value={formData.age}
-                onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 
-                  bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-              >
-                {ageRanges.map((range) => (
-                  <option key={range.value} value={range.value}>
-                    {range.label.zh} / {range.label.en}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* 名字风格 */}
-            <div>
-              <label className="block mb-2">
-                <BilingualText
-                  zh="名字风格"
-                  en="Name Style"
-                  className="text-lg font-medium"
-                />
-              </label>
-              <select
-                value={formData.style}
-                onChange={(e) => setFormData({ ...formData, style: e.target.value })}
-                className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 
-                  bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-              >
-                {styles.map((style) => (
-                  <option key={style.value} value={style.value}>
-                    {style.label.zh} / {style.label.en}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* 性格特征 */}
-            <div>
-              <label className="block mb-2">
-                <BilingualText
-                  zh="性格特征（可多选）"
-                  en="Personality Traits (Multiple)"
-                  className="text-lg font-medium"
-                />
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {personalities.map((trait) => (
-                  <label key={trait.value} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      value={trait.value}
-                      checked={formData.personality.includes(trait.value)}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setFormData({
-                          ...formData,
-                          personality: e.target.checked
-                            ? [...formData.personality, value]
-                            : formData.personality.filter((v) => v !== value),
-                        });
-                      }}
-                      className="mr-2"
-                    />
-                    <span>{trait.label.zh} / {trait.label.en}</span>
-                  </label>
-                ))}
+            {/* 性格特征和兴趣爱好 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* 性格特征 */}
+              <div>
+                <label className="block mb-0.5 text-sm">
+                  <BilingualText
+                    zh="性格特征（可多选）"
+                    en="Personality Traits (Multiple)"
+                    className="text-xs font-medium"
+                  />
+                </label>
+                <div className="grid grid-cols-2 gap-1.5 text-sm">
+                  {nameGeneratorOptions.personalities.map((trait) => (
+                    <label key={trait.value} className="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        value={trait.value}
+                        checked={formData.personality.includes(trait.value)}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setFormData({
+                            ...formData,
+                            personality: e.target.checked
+                              ? [...formData.personality, value]
+                              : formData.personality.filter((v) => v !== value),
+                          });
+                        }}
+                        className="mr-2"
+                      />
+                      <span>{trait.label.zh} / {trait.label.en}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* 兴趣爱好 */}
-            <div>
-              <label className="block mb-2">
-                <BilingualText
-                  zh="兴趣爱好（可多选）"
-                  en="Interests (Multiple)"
-                  className="text-lg font-medium"
-                />
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {interests.map((interest) => (
-                  <label key={interest.value} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      value={interest.value}
-                      checked={formData.interests.includes(interest.value)}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setFormData({
-                          ...formData,
-                          interests: e.target.checked
-                            ? [...formData.interests, value]
-                            : formData.interests.filter((v) => v !== value),
-                        });
-                      }}
-                      className="mr-2"
-                    />
-                    <span>{interest.label.zh} / {interest.label.en}</span>
-                  </label>
-                ))}
+              {/* 兴趣爱好 */}
+              <div>
+                <label className="block mb-0.5 text-sm">
+                  <BilingualText
+                    zh="兴趣爱好（可多选）"
+                    en="Interests (Multiple)"
+                    className="text-xs font-medium"
+                  />
+                </label>
+                <div className="grid grid-cols-2 gap-1.5 text-sm">
+                  {nameGeneratorOptions.interests.map((interest) => (
+                    <label key={interest.value} className="inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        value={interest.value}
+                        checked={formData.interests.includes(interest.value)}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setFormData({
+                            ...formData,
+                            interests: e.target.checked
+                              ? [...formData.interests, value]
+                              : formData.interests.filter((v) => v !== value),
+                          });
+                        }}
+                        className="mr-2"
+                      />
+                      <span>{interest.label.zh} / {interest.label.en}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
 
             {/* 补充信息 */}
             <div>
-              <label className="block mb-2">
+              <label className="block mb-0.5 text-sm">
                 <BilingualText
                   zh="补充信息（可选）"
                   en="Additional Information (Optional)"
-                  className="text-lg font-medium"
+                  className="text-xs font-medium"
                 />
               </label>
               <textarea
                 value={formData.additionalInfo}
                 onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-                className="w-full p-2 rounded-md border border-gray-300 dark:border-gray-600 
+                className="w-full py-1 px-2 rounded-md border border-gray-300 dark:border-gray-600 
                   bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                rows={4}
+                rows={2}
                 placeholder="请输入任何其他想要考虑的因素... / Please enter any other factors you want to consider..."
               />
             </div>
 
             {/* 提交按钮 */}
-            <div className="text-center">
+            <div className="text-center mt-4">
               <button
                 type="submit"
                 disabled={isGenerating}
-                className="px-6 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 
+                className="px-4 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 
                   dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50"
               >
                 {isGenerating ? (
@@ -408,6 +400,11 @@ export default function NameGeneratorPage() {
           onClose={() => setToast(null)}
         />
       )}
+      <NameHistoryDialog
+        isOpen={isHistoryOpen}
+        onClose={() => setIsHistoryOpen(false)}
+        onSelect={handleHistorySelect}
+      />
     </div>
   );
 } 
