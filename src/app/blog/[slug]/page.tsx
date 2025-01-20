@@ -3,6 +3,8 @@ import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { FaTag, FaFolder } from 'react-icons/fa';
 import { Metadata, ResolvingMetadata } from 'next';
+import { BilingualText } from '@/components/BilingualText';
+import ImageViewer from '@/components/ImageViewer';
 
 interface Props {
   params: { slug: string };
@@ -107,6 +109,50 @@ export default async function BlogPost(props: Props) {
           {/* 文章内容 */}
           <div className="prose dark:prose-invert prose-lg max-w-none">
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </div>
+
+          {/* 联系方式区域 */}
+          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <BilingualText
+                zh="加入我们的社群"
+                en="Join Our Community"
+              />
+            </h3>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="text-center">
+                <ImageViewer
+                  src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-20-16-WeChat.png" 
+                  alt="WeChat" 
+                  className="w-40 h-45 rounded-lg mx-auto mb-2"
+                />
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <BilingualText
+                    zh="添加微信好友"
+                    en="Add me on WeChat"
+                  />
+                </p>
+              </div>
+              <div className="text-center">
+                <ImageViewer
+                  src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/18-12-14-cdWrnO.jpg" 
+                  alt="WeChat Group" 
+                  className="w-40 h-45 rounded-lg mx-auto mb-2"
+                />
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <BilingualText
+                    zh="加入微信群"
+                    en="Join WeChat Group"
+                  />
+                </p>
+              </div>
+            </div>
+            <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+              <BilingualText
+                zh="* 如果群已满，可以添加我的个人微信，我会帮您加入群聊"
+                en="* If the group is full, you can add my personal WeChat and I'll help you join"
+              />
+            </p>
           </div>
         </div>
 
