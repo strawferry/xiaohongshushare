@@ -31,6 +31,16 @@ export default function Header() {
               className="text-sm"
             />
           </Link>
+          <Link
+            href="/name-generator"
+            className="text-gray-900 dark:text-gray-100 hover:text-primary-500 dark:hover:text-primary-400 sm:mr-10"
+          >
+            <BilingualText
+              zh="起名工具"
+              en="Name Generator"
+              className="text-sm"
+            />
+          </Link>
         </div>
       </nav>
     </header>
