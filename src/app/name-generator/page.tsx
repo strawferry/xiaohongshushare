@@ -109,14 +109,13 @@ export default function NameGeneratorPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-          <h1 className="text-2xl font-bold text-center mb-6">
+      <h1 className="text-2xl font-bold text-center mb-6">
             <BilingualText
               zh="中文起名生成器"
               en="Chinese Name Generator"
             />
           </h1>
-
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
           <form onSubmit={handleSubmit} className="space-y-3">
             {/* 基本选项行 */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
