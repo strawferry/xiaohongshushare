@@ -32,7 +32,11 @@ export class DeepSeekNameGeneratorService implements NameGeneratorService {
           {
             role: "user",
             content: `请根据以下信息生成名字：
-性别：${options.gender === 'male' ? '男' : '女'}
+性别：${
+  options.gender === 'male' ? '男' : 
+  options.gender === 'female' ? '女' : 
+  '中性'
+}
 年龄范围：${options.age}
 偏好风格：${options.style}
 性格特征：${options.personality.join(', ')}

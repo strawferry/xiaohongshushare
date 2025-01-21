@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { BilingualText } from '@/components/BilingualText';
-import { FaSpinner, FaCopy, FaVolumeUp, FaHistory } from 'react-icons/fa';
+import { FaSpinner, FaCopy, FaVolumeUp, FaHistory, FaUndo } from 'react-icons/fa';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import Toast from '@/components/Toast';
 import { nameGeneratorOptions } from '@/constants/name-generator-options';
@@ -16,7 +16,7 @@ interface NameResult {
 }
 
 interface FormData {
-  gender: 'male' | 'female';
+  gender: 'male' | 'female' | 'neutral';
   age: string;
   style: string;
   personality: string[];
@@ -26,7 +26,7 @@ interface FormData {
 
 export default function NameGeneratorPage() {
   const [formData, setFormData] = useState<FormData>({
-    gender: 'male',
+    gender: 'neutral',
     age: '18-30',
     style: 'modern',
     personality: [],
@@ -93,26 +93,29 @@ export default function NameGeneratorPage() {
     setResults(item.results);
   };
 
+  const handleReset = () => {
+    setFormData({
+      gender: 'neutral',
+      age: '18-30',
+      style: 'modern',
+      personality: [],
+      interests: [],
+      additionalInfo: '',
+    });
+    setResults([]);
+    setError(null);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-center">
-              <BilingualText
-                zh="中文起名生成器"
-                en="Chinese Name Generator"
-              />
-            </h1>
-            <button
-              onClick={() => setIsHistoryOpen(true)}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary-500 
-                dark:hover:text-primary-400 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
-              title="历史记录 / History"
-            >
-              <FaHistory size={20} />
-            </button>
-          </div>
+          <h1 className="text-2xl font-bold text-center mb-6">
+            <BilingualText
+              zh="中文起名生成器"
+              en="Chinese Name Generator"
+            />
+          </h1>
 
           <form onSubmit={handleSubmit} className="space-y-3">
             {/* 基本选项行 */}
@@ -132,7 +135,7 @@ export default function NameGeneratorPage() {
                       type="radio"
                       value="male"
                       checked={formData.gender === 'male'}
-                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
+                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' | 'neutral' })}
                       className="mr-2"
                     />
                     <BilingualText zh="男" en="Male" />
@@ -142,10 +145,20 @@ export default function NameGeneratorPage() {
                       type="radio"
                       value="female"
                       checked={formData.gender === 'female'}
-                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' })}
+                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' | 'neutral' })}
                       className="mr-2"
                     />
                     <BilingualText zh="女" en="Female" />
+                  </label>
+                  <label className="inline-flex items-center text-sm">
+                    <input
+                      type="radio"
+                      value="neutral"
+                      checked={formData.gender === 'neutral'}
+                      onChange={(e) => setFormData({ ...formData, gender: e.target.value as 'male' | 'female' | 'neutral' })}
+                      className="mr-2"
+                    />
+                    <BilingualText zh="中性" en="Neutral" />
                   </label>
                 </div>
               </div>
@@ -286,11 +299,31 @@ export default function NameGeneratorPage() {
             </div>
 
             {/* 提交按钮 */}
-            <div className="text-center mt-4">
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsHistoryOpen(true)}
+                  className="px-3 py-1.5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 
+                    dark:hover:bg-gray-700 rounded-md transition-colors flex items-center gap-1.5"
+                >
+                  <FaHistory size={14} />
+                  <BilingualText zh="历史" en="History" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="px-3 py-1.5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 
+                    dark:hover:bg-gray-700 rounded-md transition-colors flex items-center gap-1.5"
+                >
+                  <FaUndo size={14} />
+                  <BilingualText zh="重置" en="Reset" />
+                </button>
+              </div>
               <button
                 type="submit"
                 disabled={isGenerating}
-                className="px-4 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 
+                className="px-6 py-1.5 bg-primary-500 text-white rounded-md hover:bg-primary-600 
                   dark:bg-primary-600 dark:hover:bg-primary-700 disabled:opacity-50"
               >
                 {isGenerating ? (
@@ -380,16 +413,6 @@ export default function NameGeneratorPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          )}
-
-          {/* 无结果提示 */}
-          {!error && !isGenerating && results.length === 0 && (
-            <div className="mt-8 text-center text-gray-500 dark:text-gray-400">
-              <BilingualText
-                zh="请填写信息并点击生成按钮"
-                en="Please fill in the information and click generate"
-              />
             </div>
           )}
         </div>

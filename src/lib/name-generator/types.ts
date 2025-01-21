@@ -1,5 +1,5 @@
 export interface NameGeneratorOptions {
-  gender: 'male' | 'female';
+  gender: 'male' | 'female' | 'neutral';
   age: string;
   style: string;
   personality: string[];

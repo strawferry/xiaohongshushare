@@ -48,11 +48,21 @@ class NameHistoryManager {
     }
   }
 
+  static deleteHistory(id: number): void {
+    try {
+      const history = this.getHistory();
+      const newHistory = history.filter(item => item.id !== id);
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newHistory));
+    } catch (error) {
+      console.error('Failed to delete history item:', error);
+    }
+  }
+
   static clearHistory(): void {
     try {
       localStorage.removeItem(this.STORAGE_KEY);
     } catch (error) {
-      console.error('Failed to clear name history:', error);
+      console.error('Failed to clear history:', error);
     }
   }
 
