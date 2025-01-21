@@ -1,0 +1,21 @@
+{
+  "name": "小红书分享 AI 工具集",
+  "short_name": "小红书分享 AI 工具集",
+  "description": "小红书分享 AI 智能工具集,中英文互译,起名,翻译,AI 工具",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff2e4d",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

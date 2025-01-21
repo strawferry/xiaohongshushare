@@ -171,4 +171,21 @@ export default async function BlogPost(props: Props) {
       </div>
     </article>
   );
+}
+
+function generateArticleStructuredData(post: Post) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Person",
+      "name": "ferryvip"
+    },
+    "datePublished": post.date,
+    "image": post.coverImage,
+    "articleSection": post.category,
+    "keywords": post.tags.join(", ")
+  };
 } 

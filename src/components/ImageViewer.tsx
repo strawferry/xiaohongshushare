@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface ImageViewerProps {
   src: string;
@@ -14,9 +15,12 @@ export default function ImageViewer({ src, alt, className = '' }: ImageViewerPro
 
   return (
     <>
-      <img 
+      <Image
         src={src} 
-        alt={alt} 
+        alt={alt}
+        width={800}
+        height={600}
+        loading="lazy"
         className={`cursor-pointer ${className}`}
         onClick={() => setIsOpen(true)}
       />
@@ -32,10 +36,13 @@ export default function ImageViewer({ src, alt, className = '' }: ImageViewerPro
           >
             <FaTimes size={24} />
           </button>
-          <img 
+          <Image 
             src={src} 
             alt={alt}
             className="max-h-[90vh] max-w-[90vw] object-contain"
+            width={800}
+            height={600}
+            loading="lazy"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
