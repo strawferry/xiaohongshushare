@@ -25,6 +25,17 @@ const openai = new OpenAI({
 export async function POST(request: Request) {
   try {
     const { imageUrl } = await request.json();
+    
+    // 检查图片大小
+    const base64Size = (imageUrl.length * 3) / 4; // 估算 base64 实际大小
+    const maxSize = 1 * 1024 * 1024; // 1MB
+    
+    if (base64Size > maxSize) {
+      return NextResponse.json(
+        { error: '图片太大，请压缩后重试 (最大 1MB)' },
+        { status: 413 }
+      );
+    }
 
     // 从 base64 URL 中提取实际的 base64 字符串和 MIME 类型
     const [header, base64Image] = imageUrl.split(',');
