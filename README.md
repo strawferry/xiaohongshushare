@@ -21,6 +21,8 @@
 
 **在线访问: [小红书分享](https://xiaohongshushare.online)**
 
+**代码仓库: [xiaohongshushare](https://github.com/strawferry/xiaohongshushare)**
+
 ## 2. 项目运行
 
 1. 安装依赖
@@ -46,7 +48,7 @@ npm run dev
 
 ## 3. cursor 的项目开发过程
 
-访问仓库下的 [.specstory/history/小红书中英文翻译应用开发.md]('/.specstory/history/小红书中英文翻译应用开发.md') 查看详细的开发过程.
+访问仓库下的 [.specstory/history/小红书中英文翻译应用开发.md](/.specstory/history/小红书中英文翻译应用开发.md) 查看详细的开发过程.
 
 
 ------
