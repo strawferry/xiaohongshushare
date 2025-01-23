@@ -2,49 +2,45 @@
 
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import Image from 'next/image';
 
 interface ImageViewerProps {
   src: string;
-  alt: string;
+  alt?: string;
   className?: string;
 }
 
-export default function ImageViewer({ src, alt, className = '' }: ImageViewerProps) {
+export default function ImageViewer({ src, alt = 'Image', className }: ImageViewerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Image
-        src={src} 
+      <img
+        src={src}
         alt={alt}
-        width={800}
-        height={600}
-        loading="lazy"
-        className={`cursor-pointer ${className}`}
+        className={`w-full rounded-lg cursor-zoom-in hover:opacity-90 transition-opacity ${className}`}
         onClick={() => setIsOpen(true)}
       />
-      
+
       {isOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          className="fixed inset-0 bg-black flex items-center justify-center z-50 mt-0-important"
           onClick={() => setIsOpen(false)}
         >
-          <button 
-            className="absolute top-4 right-4 text-white hover:text-gray-300"
+          <button
             onClick={() => setIsOpen(false)}
+            className="absolute top-4 right-4 p-2 text-white/80 hover:text-white z-10"
           >
-            <FaTimes size={24} />
+            <FaTimes className="w-6 h-6" />
           </button>
-          <Image 
-            src={src} 
-            alt={alt}
-            className="max-h-[90vh] max-w-[90vw] object-contain"
-            width={800}
-            height={600}
-            loading="lazy"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <div className="w-full h-full flex items-center justify-center mt-0-important">
+            <img
+              src={src}
+              alt={alt}
+              className="max-w-[95vw] max-h-[95vh] w-auto h-auto object-contain cursor-zoom-out select-none"
+              onClick={(e) => e.stopPropagation()}
+              draggable={false}
+            />
+          </div>
         </div>
       )}
     </>

@@ -13,6 +13,15 @@ const nextConfig = {
     // 启用服务器组件
     serverActions: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        pathname: '/**',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig 

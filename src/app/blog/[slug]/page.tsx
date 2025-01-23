@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPostBySlug, getAllPosts } from '@/lib/blog';
+import { getPostBySlug, getAllPosts, Post } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { FaTag, FaFolder } from 'react-icons/fa';
 import { Metadata, ResolvingMetadata } from 'next';
@@ -120,11 +120,11 @@ export default async function BlogPost(props: Props) {
               />
             </h3>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <div className="text-center">
+              <div className="text-center w-40">
                 <ImageViewer
                   src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-20-16-WeChat.png" 
                   alt="WeChat" 
-                  className="w-40 h-45 rounded-lg mx-auto mb-2"
+                  className="rounded-lg mx-auto mb-2"
                 />
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   <BilingualText
@@ -133,11 +133,11 @@ export default async function BlogPost(props: Props) {
                   />
                 </p>
               </div>
-              <div className="text-center">
+              <div className="text-center w-40">
                 <ImageViewer
                   src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/18-12-14-cdWrnO.jpg" 
                   alt="WeChat Group" 
-                  className="w-40 h-45 rounded-lg mx-auto mb-2"
+                  className="rounded-lg mx-auto mb-2"
                 />
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   <BilingualText

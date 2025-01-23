@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BilingualText } from '@/components/BilingualText';
-import { FaLanguage, FaSignature, FaBook } from 'react-icons/fa';
+import { FaLanguage, FaSignature, FaBook, FaImage } from 'react-icons/fa';
+import ImageAnalysisHistoryPanel from '@/components/ImageAnalysisHistory';
 
 interface Tool {
   id: string;
@@ -42,6 +43,19 @@ const tools: Tool[] = [
     },
     icon: <FaSignature className="w-6 h-6" />,
     href: '/name-generator',
+  },
+  {
+    id: 'image-analyzer',
+    title: {
+      zh: '图片分析',
+      en: 'Image Analysis',
+    },
+    description: {
+      zh: 'AI 智能识别图片内容，生成描述和标签',
+      en: 'AI analyzes images and generates descriptions and tags',
+    },
+    icon: <FaImage className="w-6 h-6" />,
+    href: '/image-analyzer',
   },
   {
     id: 'blog',
@@ -111,6 +125,7 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+          <ImageAnalysisHistoryPanel />
         </div>
       </div>
     </div>

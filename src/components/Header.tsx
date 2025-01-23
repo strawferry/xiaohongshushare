@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { BilingualText } from './BilingualText';
-import { FaTools, FaLanguage, FaSignature, FaBook } from 'react-icons/fa';
+import { FaTools, FaLanguage, FaSignature, FaBook, FaImage } from 'react-icons/fa';
 import DropdownMenu from './DropdownMenu';
 import { useRouter } from 'next/navigation';
 
@@ -25,6 +25,15 @@ const tools = [
     },
     icon: <FaSignature size={16} />,
     href: '/name-generator'
+  },
+  {
+    id: 'image-analyzer',
+    title: {
+      zh: '图片分析',
+      en: 'Image Analysis'
+    },
+    icon: <FaImage size={16} />,
+    href: '/image-analyzer'
   },
   {
     id: 'blog',
