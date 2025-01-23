@@ -3,6 +3,12 @@
     "app/api/translate/**/*": {
       "maxDuration": 60
     },
+    "app/api/analyze-image/**/*": {
+      "maxDuration": 60
+    },
+    "app/api/generate-name/**/*": {
+      "maxDuration": 60
+    },
     "app/api/blog/**/*": {
       "maxDuration": 30
     },
