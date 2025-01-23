@@ -13,13 +13,20 @@ interface ImageUploaderProps {
 export default function ImageUploader({ onUpload, isUploading }: ImageUploaderProps) {
   const [dragActive, setDragActive] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const resetState = () => {
+    setPreviewUrl(null);
+    setError(null);
+    setDragActive(false);
+  };
 
   const compressImage = async (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
-      const maxWidth = 1200;
-      const maxHeight = 1200;
-      const maxSizeMB = 2;
-      const quality = 0.8;
+      const maxWidth = 800;
+      const maxHeight = 800;
+      const maxSizeMB = 1;
+      const quality = 0.7;
 
       const img = new Image();
       const reader = new FileReader();
@@ -101,23 +108,27 @@ export default function ImageUploader({ onUpload, isUploading }: ImageUploaderPr
       return result;
     } catch (error) {
       console.error('Analysis failed:', error);
+      setError(error instanceof Error ? error.message : '分析失败，请重试');
+      setPreviewUrl(null); // 清除预览
       throw error;
     }
   };
 
   const handleFile = useCallback(async (file: File) => {
+    resetState();
+
     if (!file.type.startsWith('image/')) {
-      alert('请上传图片文件');
+      setError('请上传图片文件');
       return;
     }
 
     try {
       const base64Image = await compressImage(file);
-      setPreviewUrl(base64Image); // 直接使用 base64 作为预览
+      setPreviewUrl(base64Image);
       await handleAnalyzeImage(base64Image);
     } catch (error) {
       console.error('Error processing image:', error);
-      alert('图片处理失败，请重试');
+      setError('图片处理失败，请重试');
     }
   }, [onUpload]);
 
@@ -148,41 +159,41 @@ export default function ImageUploader({ onUpload, isUploading }: ImageUploaderPr
       onDragLeave={() => setDragActive(false)}
       onDrop={handleDrop}
     >
-      {previewUrl ? (
-        <div className="relative">
-          <img
-            src={previewUrl}
-            alt="Preview"
-            className="max-h-96 mx-auto rounded-lg"
-          />
-          {isUploading && (
-            <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
-              <div className="loading-spinner" />
-            </div>
-          )}
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleChange}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+      />
+      
+      {error ? (
+        <div className="space-y-4">
+          <div className="text-red-500">{error}</div>
+          <button
+            onClick={resetState}
+            className="text-primary-500 hover:text-primary-600"
+          >
+            <BilingualText
+              zh="重新上传"
+              en="Upload Again"
+            />
+          </button>
         </div>
       ) : (
         <>
           <FiUpload className="mx-auto h-12 w-12 text-gray-400" />
           <div className="mt-4">
             <BilingualText
-              zh="拖放图片到这里，或者"
-              en="Drop image here, or"
+              zh="点击或拖拽图片到这里上传"
+              en="Click or drag image here to upload"
             />
-            <label className="mx-2 text-primary-500 hover:text-primary-600 cursor-pointer">
-              <BilingualText
-                zh="点击上传"
-                en="browse"
-              />
-              <input
-                type="file"
-                className="hidden"
-                accept="image/*"
-                onChange={handleChange}
-                disabled={isUploading}
-              />
-            </label>
           </div>
+          <p className="mt-2 text-sm text-gray-500">
+            <BilingualText
+              zh="支持 JPG、PNG 格式"
+              en="Supports JPG, PNG formats"
+            />
+          </p>
         </>
       )}
     </div>
