@@ -9,6 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import Header from '@/components/Header';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { Clarity } from '@/components/Clarity';
+import GithubCorner from '@/components/GithubCorner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -62,6 +63,7 @@ export default function RootLayout({
               {children}
             </div>
             <Footer />
+            <GithubCorner />
           </main>
         </ThemeProvider>
         <VercelAnalytics />
