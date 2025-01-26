@@ -53,6 +53,7 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
         <Clarity />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5925237141739939" crossOrigin="anonymous"></script>
       </head>
       <body className={inter.className}>
         <ThemeProvider>
