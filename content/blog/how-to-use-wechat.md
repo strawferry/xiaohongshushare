@@ -21,7 +21,7 @@ Everyone living in or traveling in China learns quickly that they need WeChat as
 
 Download the WeChat app from your app store.
 
-![下载微信](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-07-Download-the-WeChat-app.png)
+![下载微信](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-45-07-Download-the-WeChat-app.png)
 
 #### 第 2 步：注册并创建账户
 ##### Step 2: Register and create an account
@@ -30,7 +30,7 @@ Download the WeChat app from your app store.
 
 Create a username and password, and fill out your personal information. Foreigners are required to scan the passport ID page to verify their identity.
 
-![注册并创建账户](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-33-Register-and-create-an-account.jpg)
+![注册并创建账户](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-45-33-Register-and-create-an-account.jpg)
 #### 第 3 步：添加好友
 ##### Step 3: Add friends
 
@@ -38,14 +38,14 @@ Create a username and password, and fill out your personal information. Foreigne
 
 You can begin sending and receiving friend requests from people that will show up as a notification. If you want to send a friend request, click "+" and "Add Contacts" at the top right corner, then enter your friend's name or phone number in the search bar. If you find the correct person, you can send a request.
 
-![添加好友](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-45-48-Add-friends.png)
+![添加好友](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-45-48-Add-friends.png)
 
 #### 第 4 步：开始聊天
 ##### Step 4: Start chatting
 
 现在您可以开始聊天了。要开始通信，打开您的联系人列表并选择您想要发送文字或语音消息的人。
 
-![开始聊天](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-46-44-Start-chatting.jpg)
+![开始聊天](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-46-44-Start-chatting.jpg)
 
 对于不会读中文的人，微信有自动翻译功能。点击并按住消息，选择"翻译"将消息翻译成您的首选语言。进入"设置"-"通用"-"翻译"并选择语言。
 
@@ -59,7 +59,7 @@ For those who can't read Chinese, WeChat has automatic translation. Click and ho
 
 WeChat is available in multiple languages. You can click "General" - "Multilanguage" and choose your preferred language.
 
-![语言设置](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-47-53-Translate-settings.jpg)
+![语言设置](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-47-53-Translate-settings.jpg)
 
 ### 微信的功能
 #### WeChat's Features
@@ -71,7 +71,7 @@ WeChat is available in multiple languages. You can click "General" - "Multilangu
 
 Using WeChat Wallet makes paying for everything easy. WeChat Wallet allows you to pay bills, transfer money to friends, pay for movie tickets and meals out, and much more.
 
-![微信支付](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-48-49-Pay-bills.jpg)
+![微信支付](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-48-49-Pay-bills.jpg)
 
 ### 2. 叫车服务
 ### 2. Call a driver
@@ -80,7 +80,7 @@ Using WeChat Wallet makes paying for everything easy. WeChat Wallet allows you t
 
 You can call a taxi or ride share and pay for it using Ride Hailing in WeChat Services, sparing you the trouble of wandering the streets and hailing a taxi.
 
-![叫车服务](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-49-12-Call-a-driver.jpg)
+![叫车服务](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-49-12-Call-a-driver.jpg)
 
 #### 3. 翻译功能
 ##### 3. Translation
@@ -93,7 +93,7 @@ Not reading or speaking Chinese can be a huge barrier. WeChat can make this easi
 
 Just click "+" and "Scan" on the right top corner, select "Translate" and then take a photo of the text you want to translate. Voila! A translated version will appear on your phone instantly.
 
-![扫描翻译](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-49-41-Translation.jpg)
+![扫描翻译](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-49-41-Translation.jpg)
 
 #### 4. 预订旅行
 ##### 4. Book travel
@@ -102,7 +102,7 @@ Just click "+" and "Scan" on the right top corner, select "Translate" and then t
 
 WeChat is helpful if you want to book train or air tickets. Click "Rail and Flights" in WeChat Services, search train or air ticket information, and book your ticket.
 
-![预订旅行](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/13-50-11-Book-travel.jpg)
+![预订旅行](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/13-50-11-Book-travel.jpg)
 
 在微信中还有许多其他功能，比如充值手机流量、购买电影票或订购外卖。这个应用程序是改变生活的游戏规则！
 

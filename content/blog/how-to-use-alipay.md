@@ -21,7 +21,7 @@ Alipay is one of the most popular mobile payment apps in China. This guide will 
 
 Download the Alipay app from your app store.
 
-![下载支付宝](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-06-52-Download-the-Alipay-app.png)
+![下载支付宝](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-06-52-Download-the-Alipay-app.png)
 
 #### 第 2 步：注册账户
 ##### Step 2: Register an account
@@ -44,14 +44,14 @@ Download the Alipay app from your app store.
 6. Set up your login password
 7. Fill in your personal information
 
-![注册账户](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-07-21-Register-for-an-Alipay-account-using-your-phone-number.png)
+![注册账户](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-07-21-Register-for-an-Alipay-account-using-your-phone-number.png)
 
 
 #### 第 3 步：添加支付方式
 ##### Step 3: Add payment method
 
 
-![个人页面](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-08-17-Alipay-acount.png)
+![个人页面](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-08-17-Alipay-acount.png)
 
 您可以添加国际信用卡（Visa/Mastercard）或借记卡：
 
@@ -71,7 +71,7 @@ You can add international credit cards (Visa/Mastercard) or debit cards:
 4. Enter card information
 5. Complete verification
 
-![添加支付方式](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-12-20-Add-Bank-Card.png)
+![添加支付方式](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-12-20-Add-Bank-Card.png)
 
 ### 支付宝的主要功能
 #### Main features of Alipay
@@ -91,7 +91,7 @@ When shopping in stores, you can:
 - Enter the amount
 - Confirm payment
 
-![扫码支付](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-28-48-scan-to-pay.png)
+![扫码支付](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-28-48-scan-to-pay.png)
 
 #### 2. 转账功能
 ##### 2. Transfer money
@@ -132,7 +132,7 @@ Alipay offers various lifestyle services:
 - Hotel bookings
 - Ride-hailing services
 
-![生活服务](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/14-33-24-VUChT9.png)
+![生活服务](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/14-33-24-VUChT9.png)
 
 #### 4. 交通出行
 ##### 4. Transportation

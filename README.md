@@ -2,7 +2,7 @@
 
 起因是小红书大量涌入美国的 `tiktok` 难民,但是小红书的内容大部分都是中文,想着能不能用 AI 工具去翻译一下,顺便熟悉下当前最流行的 cursor 编辑器,然后就有了这个项目.
 
-![项目主页](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250123/14-12-29-3bDToi.png)
+![项目主页](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250123/14-12-29-3bDToi.png)
 
 > 这是一个使用  `cursor` 编辑器通过自然语言写出的 AI 工具集合,目前主要包含以下功能:
 
@@ -16,7 +16,7 @@
 
 | 小红书中英文翻译 | AI 起中文名 | 表情包内容解析 | 小红书使用教程 |
 | :---: | :---: | :---: | :---: |
-| ![14-20-59-shotEasy-screencapture-xiaohongshushare-online](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250123/14-20-59-shotEasy-screencapture-xiaohongshushare-online.png) | ![14-21-18-shotEasy-screencapture-xiaohongshushare-online(1)](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250123/14-21-18-shotEasy-screencapture-xiaohongshushare-online%20(1).png) | ![14-21-32-shotEasy-screencapture-xiaohongshushare-online(2)](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250123/14-21-32-shotEasy-screencapture-xiaohongshushare-online%20(2).png) | ![14-21-43-shotEasy-screencapture-xiaohongshushare-online(3)](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250123/14-21-43-shotEasy-screencapture-xiaohongshushare-online%20(3).png) |
+| ![14-20-59-shotEasy-screencapture-xiaohongshushare-online](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250123/14-20-59-shotEasy-screencapture-xiaohongshushare-online.png) | ![14-21-18-shotEasy-screencapture-xiaohongshushare-online(1)](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250123/14-21-18-shotEasy-screencapture-xiaohongshushare-online%20(1).png) | ![14-21-32-shotEasy-screencapture-xiaohongshushare-online(2)](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250123/14-21-32-shotEasy-screencapture-xiaohongshushare-online%20(2).png) | ![14-21-43-shotEasy-screencapture-xiaohongshushare-online(3)](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250123/14-21-43-shotEasy-screencapture-xiaohongshushare-online%20(3).png) |
 
 
 **在线访问: [小红书分享](https://xiaohongshushare.online)**

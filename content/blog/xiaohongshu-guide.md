@@ -7,7 +7,7 @@ tags: ['小红书', '教程', '社交媒体', '营销']
 order: 1
 ---
 
-![小红书概览](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-15-51-JqdrME.png)
+![小红书概览](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-15-51-JqdrME.png)
 
 ### 什么是小红书？
 #### What is Xiaohongshu?
@@ -38,7 +38,7 @@ With over 300 million monthly active users scrolling, shopping, and sharing, Xia
 - Users have strong purchasing power
 - High interest in quality lifestyle and international brands
 
-![用户画像](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-16-58-HiRGCd.png)
+![用户画像](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-16-58-HiRGCd.png)
 
 ### 2. 内容形式
 #### 2. Content Format
@@ -55,7 +55,7 @@ Xiaohongshu isn't about flashy selfies or mindless scrolling. It focuses on:
 - Detailed product reviews
 - Practical shopping advice
 
-![内容展示](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-16-37-vCrnex.png)
+![内容展示](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-16-37-vCrnex.png)
 
 ### 如何在小红书取得成功
 #### How to Succeed on Xiaohongshu
@@ -90,7 +90,7 @@ When choosing KOLs, consider:
 - Engagement and conversion rates
 - Content expertise and authenticity
 
-![KOL合作](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-17-24-k5plrj.png)
+![KOL合作](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-17-24-k5plrj.png)
 
 #### 3. 深入社区互动
 ##### 3. Engage with the Community
@@ -153,7 +153,7 @@ When choosing KOLs, consider:
    - Organize online events
    - Build brand community
 
-![营销策略](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-17-51-5nx2AO.png)
+![营销策略](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-17-51-5nx2AO.png)
 
 #### 注意事项
 ##### Important Notes
@@ -178,7 +178,7 @@ When choosing KOLs, consider:
 小红书不仅仅是另一个社交媒体平台，它是连接品牌与中国年轻消费者的重要桥梁。通过正确的策略和持续的努力，品牌可以在这个平台上建立起强大的影响力和忠实的用户群体。
 
 Xiaohongshu is not just another social media platform; it's a crucial bridge connecting brands with young Chinese consumers. With the right strategy and consistent effort, brands can build strong influence and loyal following on this platform.
-![小红书](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/16-18-38-7KMEZ9.png)
+![小红书](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/16-18-38-7KMEZ9.png)
 
 ---
 *本文参考来源：[WPIC Marketing + Technologies](https://wpic.co/blog/guide-to-xiaohongshu-red-in-china/)* 

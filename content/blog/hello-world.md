@@ -33,7 +33,7 @@ This is an AI-powered Chinese-English translation tool specifically designed for
 Open [https://xiaohongshushare.online/](https://xiaohongshushare.online/) , simply paste the text you want to translate into the input box and click the translate button. The tool will automatically detect whether the input is Chinese or English and translate accordingly.
 
 
-![中英文互译 | Chinese-English Translator](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-53-00-9RVnQW.png)
+![中英文互译 | Chinese-English Translator](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-53-00-9RVnQW.png)
 
 ### 历史记录
 #### History
@@ -42,7 +42,7 @@ Open [https://xiaohongshushare.online/](https://xiaohongshushare.online/) , simp
 
 Click the history button to view previous translation records.
 
-![历史记录 | History](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-54-21-eWaQTJ.jpg)
+![历史记录 | History](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-54-21-eWaQTJ.jpg)
 
 ### 深色模式
 #### Dark Mode
@@ -51,4 +51,4 @@ Click the history button to view previous translation records.
 
 Click the dark mode button to switch between light/dark themes.
 
-![深色模式 | Dark Mode](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-55-36-MwwPTD.jpg)
+![深色模式 | Dark Mode](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-55-36-MwwPTD.jpg)

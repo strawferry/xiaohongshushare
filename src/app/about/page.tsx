@@ -123,7 +123,7 @@ export default function AboutPage() {
                                         en="We have an active learning community, welcome to join:"
                                     />
                                 </p>
-                                <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/18-12-14-cdWrnO.jpg" alt="wechat group" className='w-1/2 mx-auto rounded-lg' />
+                                <img src="https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/18-12-14-cdWrnO.jpg" alt="wechat group" className='w-1/2 mx-auto rounded-lg' />
                                 <ul className="list-disc list-inside space-y-2 mb-4">
                                         <BilingualText
                                             zh="互相学习和分享经验,分享生活技巧和实用工具"
@@ -154,8 +154,8 @@ export default function AboutPage() {
                                 />
                             </p>
                             <div className="flex justify-center">
-                                <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-20-16-WeChat.png" alt="wechat" className='w-1/2 mr-6 rounded-lg' />
-                                <img src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-18-25-xiaohongshu.png" alt="xiaohongshu" className='w-1/2 rounded-lg' />
+                                <img src="https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-20-16-WeChat.png" alt="wechat" className='w-1/2 mr-6 rounded-lg' />
+                                <img src="https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-18-25-xiaohongshu.png" alt="xiaohongshu" className='w-1/2 rounded-lg' />
                             </div>
                             <ul className="list-disc list-inside mt-2">
                                 <li>Email: ferryvip@163.com</li>

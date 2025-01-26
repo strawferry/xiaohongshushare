@@ -122,7 +122,7 @@ export default async function BlogPost(props: Props) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <div className="text-center w-40">
                 <ImageViewer
-                  src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/17-20-16-WeChat.png" 
+                  src="https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/17-20-16-WeChat.png" 
                   alt="WeChat" 
                   className="rounded-lg mx-auto mb-2"
                 />
@@ -135,7 +135,7 @@ export default async function BlogPost(props: Props) {
               </div>
               <div className="text-center w-40">
                 <ImageViewer
-                  src="https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/18-12-14-cdWrnO.jpg" 
+                  src="https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/18-12-14-cdWrnO.jpg" 
                   alt="WeChat Group" 
                   className="rounded-lg mx-auto mb-2"
                 />

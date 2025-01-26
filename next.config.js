@@ -20,6 +20,11 @@ const nextConfig = {
         hostname: 'raw.githubusercontent.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        pathname: '/**',
+      },
     ],
   },
 }

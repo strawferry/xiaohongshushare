@@ -7,7 +7,7 @@ tags: ['微信支付', '教程', '生活技巧', '移动支付']
 order: 3
 ---
 
-![微信支付](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-19-26-mkmKqF.png)
+![微信支付](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-19-26-mkmKqF.png)
 
 外国人可以使用微信支付，设置过程也很简单，但需要注意一些细节。本指南将一步步教您如何设置微信支付。
 
@@ -40,7 +40,7 @@ You'll need:
 
 Tap on the Wallet icon in the "Me" tab to bring up WeChat Pay. If you can't find the Wallet tab, it likely means that your WeChat account is registered under a foreign phone number. In this case, you'll need a friend to send you money first to activate the wallet feature.
 
-![打开微信钱包](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-01-ljwibK.png)
+![打开微信钱包](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-20-01-ljwibK.png)
 
 ### 第 2 步：验证身份并选择添加银行卡
 #### Step 2: Verify and Select Add New Card
@@ -53,7 +53,7 @@ From here the process is virtually the same. You'll need a mainland bank account
 
 Tap "Add a Card" from the WeChat Wallet section or from the popup that you get when you try to accept your friend's money transfer.
 
-![添加银行卡](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-33-ZFxooh.png)
+![添加银行卡](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-20-33-ZFxooh.png)
 
 ### 第 3 步：输入银行卡信息并设置支付密码
 #### Step 3: Enter Bank Information and Set Pin Code
@@ -72,7 +72,7 @@ Tap "Add a Card" from the WeChat Wallet section or from the popup that you get w
 4. If you get an error for invalid info, you may need to go to the bank and set it up with their help. Usually, this is due to a typo on your bank records
 5. Finally, select a 6-digit payment pin code. This is a code you'll be using anytime you wish to make a payment with WeChat Pay
 
-![设置支付密码](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-20-50-CBwhQu.png)
+![设置支付密码](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-20-50-CBwhQu.png)
 
 ### 第 4 步：检查您的银行卡并添加其他卡片
 #### Step 4: Check Your Bank Card and Add Additional Cards
@@ -85,7 +85,7 @@ If WeChat Wallet did not appear as an option in the "Me" tab, it should now. Tap
 
 Money that WeChat friends send to you will end up in your balance. You can withdraw this money directly into any of the bank cards that you have linked. WeChat charges a 0.1% commission when you make a withdrawal.
 
-![查看银行卡](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-21-07-k25JD3.png)
+![查看银行卡](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-21-07-k25JD3.png)
 
 ### 使用提示
 #### Usage Tips

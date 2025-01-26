@@ -14,7 +14,7 @@ order: 4
 
 WeChat is a social media developed by Tencent. Users can connect with their families, friends and co-workers easily. It is highly compatible with different kinds of devices, including Android phone, iPhone, Windows phone, Symbian phone and computers (Mac & Windows). Besides chatting, you can also share pictures and videos, play games, make payments and more.
 
-![微信概览](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-28-39-Y7PyJZ.png)
+![微信概览](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-28-39-Y7PyJZ.png)
 
 ### 如何设置微信
 #### How to Set Up WeChat
@@ -43,7 +43,7 @@ First, download and install WeChat from your app store or official website. To e
 4. Enter the verification code you receive
 5. Set up your profile and photo
 
-![注册账号](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-29-16-LNTwC1.png)
+![注册账号](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-29-16-LNTwC1.png)
 
 ### 微信的主要功能
 #### Main Features of WeChat
@@ -77,7 +77,7 @@ There are several ways to add contacts:
 - Scan others' QR code
 - Or show your QR code to others
 
-![添加好友](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-30-04-2RedtF.png)
+![添加好友](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-30-04-2RedtF.png)
 
 #### 2. 开始聊天
 ##### 2. Start Chatting
@@ -96,9 +96,9 @@ Chat features include:
 - Emojis and stickers
 - Voice and video calls
 
-![聊天功能](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-30-23-wzVFpm.png)
-![创建群聊](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-30-57-denn5R.png)
-![添加标签](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-31-34-38CbDP.png)
+![聊天功能](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-30-23-wzVFpm.png)
+![创建群聊](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-30-57-denn5R.png)
+![添加标签](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-31-34-38CbDP.png)
 
 #### 3. 朋友圈
 ##### 3. Moments
@@ -115,7 +115,7 @@ Share your life in Moments:
 - View and interact with friends' posts
 - Set visibility settings
 
-![朋友圈](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-32-05-S0UHG0.png)
+![朋友圈](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-32-05-S0UHG0.png)
 
 #### 4. 微信支付
 ##### 4. WeChat Pay
@@ -134,7 +134,7 @@ Payment features require linking a bank card first:
 - Transfer to friends
 - Pay bills
 
-![支付功能](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-33-58-T1O8QK.png)
+![支付功能](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-33-58-T1O8QK.png)
 
 #### 5. 其他功能
 ##### 5. Other Features
@@ -184,7 +184,7 @@ Web WeChat allows you to use WeChat on your computer without installing the app:
 3. Start chatting on your computer
 
 
-![网页版微信](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250117/15-34-24-Bns7XI.png)
+![网页版微信](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250117/15-34-24-Bns7XI.png)
 
 ---
 *本文参考来源：[MobiKin](https://www.mobikin.com/android-backup/how-to-use-wechat.html)* 

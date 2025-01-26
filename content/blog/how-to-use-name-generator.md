@@ -14,7 +14,7 @@ AI 起名工具是一个智能化的中文名字生成器，它能根据您提�
 
 The AI Name Generator is an intelligent Chinese name creation tool that generates beautiful names based on your personal characteristics and preferences. Each generated name comes with detailed explanations and pinyin, helping you better understand the meaning behind the names.
 
-![起名工具界面](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250121/11-35-32-afItcA.png)
+![起名工具界面](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250121/11-35-32-afItcA.png)
 
 ### 使用步骤
 #### Usage Steps
@@ -115,7 +115,7 @@ Click the "Generate Names" button, and the system will generate multiple name op
 4. Pay attention to social and cultural implications
 5. Consider name suitability in different contexts
 
-![名字示例](https://raw.githubusercontent.com/strawferry/GSS/master/uPic/20250121/11-37-35-boZuq9.png)
+![名字示例](https://cdn.jsdelivr.net/gh/strawferry/GSS@master/uPic/20250121/11-37-35-boZuq9.png)
 
 希望这个指南能帮助您更好地使用 AI 起名工具，找到一个理想的名字！
 
